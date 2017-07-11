@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="keywords" content="乌鲁木齐市存量房交易系统,乌鲁木齐房产交易,存量房交易系统" />
+    <meta name="description" content="乌鲁木齐市存量房交易系统,乌鲁木齐房产交易,存量房交易系统" />
+    <link rel="Shortcut icon" href="image/logo.ico">
+    <link rel="stylesheet" href="js/paging/paging.css"/>
+    <title>乌鲁木齐市存量房交易系统-合同列表</title>
+
+    <link rel="stylesheet" type="text/css" href="css/countState.css" />
+    <script type="text/javascript" src="js/jquery.min-1.9.1.js"></script>
+    <script src="js/paging/paging.js"></script>
+    <script type="text/javascript" src="js/angular/angular-1.2.27.js"></script>
+    <script src="js/storage.js"></script>
+
+</head>
+<body>
+<div class="tb_container">
+    <div class="top-xm fund-div">
+        <p class="fund-p">
+            <input type="text" placeholder="按合同编号搜索"/>
+            <input type="text" placeholder="按监管银行账号搜索"/>
+            <input type="text" placeholder="按卖方银行账号搜索"/>
+            <input type="text" placeholder="按买方银行账号搜索"/>
+            <span class="big"></span>
+        </p>
+        <p class="p_after">
+            <a href="" class="afterArrow">银行管理</a>
+            <a href="" class="afterArrow">流水统计</a>
+            <a href="" class="afterArrow">统计信息</a>
+            <a href="#" class="reload">刷新</a>
+            <a href="bankAddAttract.html" class="add reload">新增</a>
+            <a href="#" class="export reload">导出</a>
+        </p>
+    </div>
+    <div class="table-border fund-border">
+       <div>
+           <table class="bankManage-table">
+              <!-- <tr class="tr_th">
+                   <th>动作</th>
+                   <th>发生时间</th>
+                   <th>监管银行账号</th>
+                   <th>银行名称</th>
+                   <th>监管银行原余额</th>
+                   <th>监管银行余额</th>
+                   <th>发生余额</th>
+                   <th>到账日期</th>
+                   <th>合同编号</th>
+                   <th>付款时间</th>
+               </tr>
+               <tr>
+                   <td>收款</td>
+                   <td>2017.07.05</td>
+                   <td>201707060002</td>
+                   <td>中国银行</td>
+                   <td>0</td>
+                   <td>1,000,000</td>
+                   <td>1,000,000</td>
+                   <td>2017.07.08</td>
+                   <td>201707090006</td>
+                   <td>2017.07.09</td>
+               </tr>
+               <tr>
+                   <td>收款</td>
+                   <td>2017.07.05</td>
+                   <td>201707060002</td>
+                   <td>新疆银行</td>
+                   <td>0</td>
+                   <td>1,000,000</td>
+                   <td>1,000,000</td>
+                   <td>2017.07.08</td>
+                   <td>201707090006</td>
+                   <td>2017.07.09</td>
+               </tr>-->
+           </table>
+       </div>
+
+        <div class="foot">
+            <p>共 <span class="totalPage">1</span>条记录&nbsp;&nbsp; <span class="currentPage">1</span>/<span class="totalPage">1</span>页</p>
+            <div id="pageTool">
+
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+function toPage(_num){
+    var _tmp={};
+    for(var i=0;i<storage.getStorage('htData').length;i++){
+        if(storage.getStorage('htData')[i].data_addAttr.attrNum == _num){
+            _tmp = storage.getStorage('htData')[i];
+        }
+    }
+    storage.removeStorage('htDataSingle')
+    storage.setStorage('htDataSingle',_tmp);
+
+    window.location.href = 'bankAddAttractLook.html?order_num='+_num;
+}
+
+
+
+    $(function(){
+        /*table样式设置*/
+        $('tr:even').css('background','#f5f5f5');
+        $('.tr_th').css('background','#d7e5f0');
+
+        /*table1-----定义ajax发送成功之后执行的函数*/
+        var ajax_suc=function(data){
+            var _html ="" +
+                    "<tr class='tr_th'> " +
+                        "<th>单号</th> " +
+                        "<th>状态</th>" +
+                        " <th>合同金额</th>" +
+                        "<th>监管金额</th> " +
+                        "<th>监管银行</th> " +
+                        //"<th>监管银行账号</th> " +
+                        "<th>创建人</th> " +
+                        "<th>创建时间</th> " +
+                    " </tr>";
+            for(var i=0;i<data.length;i++){
+                _html += "<tr>" +
+                        "<td><a class='underline-a' href='javascript:toPage(\""+data[i].num+"\")'>"+data[i].num+"</a></td>" +
+                        "<td>"+data[i].state+"</td>" +
+                        "<td>"+data[i].attractMoney+"</td>" +
+                        "<td>"+data[i].superviseMoney+"</td>" +
+                        "<td>"+data[i].superBank+"</td>" +
+                        //"<td>"+data[i].sBankNum+"</td>" +
+                        "<td>"+data[i].createPeo+"</td>" +
+                        "<td>"+data[i].createTime+"</td>" +
+                        "</tr>";
+            }
+            $(".bankManage-table").html(_html);
+
+            /*table斑马线设置*/
+            $('tr:even').css('background','#f5f5f5');
+        };
+
+
+        /*发送ajax请求*/
+        /*$.ajax({
+            url:'data/bankManage.json',
+            type:'post',
+            success:function(data){
+                data = JSON.parse(data);
+                ajax_suc(data);
+                $('#pageTool').Paging({
+                    pagesize:10,
+                    count:data.total,
+                    callback:function(page,size,count){
+                        $('.totalPage').text(count);
+                        $('.currentPage').text(page);
+                    }
+                });
+
+                $('.totalCount').text(data.total);
+                var totalPage=Math.ceil(data.total/15);
+                $(".totalPage").html(totalPage);
+
+            },
+            error:function(errorMeg){
+                alert(errorMeg);
+            }
+        });*/
+
+
+        /*从本地拿数据*/
+        var _obtainHT = storage.getStorage('htData');
+        if(_obtainHT){
+            
+            if(_obtainHT.length){
+                console.log('有数据');
+
+                var _info=[];
+                for(var i=0;i<_obtainHT.length;i++){
+                    var _contract = {};
+                    _contract.num = _obtainHT[i].data_addAttr.attrNum;
+                    _contract.state = _obtainHT[i].data_addAttr.state;
+                    _contract.attractMoney = _obtainHT[i].data_addAttr.attrTotal;
+                    _contract.superviseMoney = _obtainHT[i].data_addAttr.supMoney;
+                    _contract.superBank = _obtainHT[i].data_addAttr.bank;
+                    //_contract.sBankNum = "201708060008";
+                    _contract.createPeo = _obtainHT[i].readOnly.creator;
+                    _contract.createTime = _obtainHT[i].readOnly.createTime;
+
+                    _info.push(_contract);
+                }
+
+                ajax_suc(_info,1);
+            }else{
+                console.log('无数据');
+            }
+        }else{
+            console.log('无数据');
+        }
+    })
+</script>
+
+</body>
+</html>

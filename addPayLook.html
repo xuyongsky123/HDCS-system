@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html ng-app="addPayApp">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="keywords" content="乌鲁木齐市存量房交易系统,乌鲁木齐房产交易,存量房交易系统" />
+    <meta name="description" content="乌鲁木齐市存量房交易系统,乌鲁木齐房产交易,存量房交易系统" />
+    <link rel="Shortcut icon" href="image/logo.ico">
+
+    <title>乌鲁木齐市存量房交易系统-首页</title>
+
+    <link rel="stylesheet" type="text/css" href="css/countState.css" />
+    <script type="text/javascript" src="js/jquery.min-1.9.1.js"></script>
+    <script type="text/javascript" src="js/angular/angular-1.2.27.js"></script>
+    <script src="js/My97DatePicker/WdatePicker.js"></script>
+    <script src="js/base-config/base-xm.js"></script>
+    <script src="js/addPay/controller-addPayLook.js"></script>
+
+</head>
+<body>
+<form name="baseForm" novalidate>
+<div class="tb_container" ng-controller="addPayCtrl">
+    <div class="top-xm fund-div">
+        <p class="p_after">
+            <a href="" class="afterArrow">银行管理</a>
+            <a href="" class="afterArrow">合同管理</a>
+            <a href="" class="afterArrow">增加合同</a>
+            <a href="#" class="reload">刷新</a>
+            <a href="#" class="export reload">导出</a>
+        </p>
+    </div>
+    <div class="table-border fund-border">
+        <p class="blue_p">增加付款</p>
+        <div class="cond-container">
+        <div class="single-item">
+            <div class="split">
+                <div class="item">
+                    <label>单号：</label>
+                    <div>
+                        <input required ng-model="dataModel.addPay.num" type="text" name="" />
+                    </div>
+                </div>
+                <div class="item">
+                    <label>合同编号：</label>
+                    <div>
+                        <input required ng-model="dataModel.addPay.contractNum" type="text"/>
+                    </div>
+                </div>
+                <div class="item">
+                    <label>状态：</label>
+                    <div>
+                        <select required ng-model="dataModel.addPay.state" ng-options="item.key as item.value for item in dictionary.contractState"></select>
+                        <i>▼</i>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <p class="white-p">已付款信息</p>
+        <div class="single-item">
+           <table class="table-pay">
+               <tr>
+                   <td>付款时间</td>
+                   <td>付款金额</td>
+                   <td>付款单号</td>
+               </tr>
+               <tr>
+                   <td required ng-bind="dataModel.payed.payTime"></td>
+                   <td required ng-bind="dataModel.payed.payMoney"></td>
+                   <td required ng-bind="dataModel.payed.payNum"></td>
+               </tr>
+           </table>
+        </div>
+        <div class="single-item">
+            <div class="split">
+                <div class="item">
+                    <label>付款日期：</label>
+                    <div>
+                        <input required ng-model="dataModel.payedAnother.payDate" type="text" name="" />
+                    </div>
+                </div>
+                <div class="item">
+                    <label>付款金额：</label>
+                    <div>
+                        <input required ng-model="dataModel.payedAnother.payMoney" type="text"/>
+                    </div>
+                </div>
+                <div class="item">
+                    <label>银行流水：</label>
+                    <div>
+                        <input required ng-model="dataModel.payedAnother.bankStream" type="text"/>
+                    </div>
+                </div>
+                <div class="item">
+                    <label class="more">资金监管到账&ensp;日期：</label>
+                    <div>
+                        <input required ng-model="dataModel.payedAnother.receiveDate" type="text"/>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="single-item readonly-table">
+           <table>
+               <tr>
+                   <td>创建时间：<span ng-bind="dataModel.readyOnlyData.createTime"></span></td>
+                   <td>创建人：<span ng-bind="dataModel.readyOnlyData.creator"></span></td>
+               </tr>
+               <tr>
+                   <td>最后修改时间：<span ng-bind="dataModel.readyOnlyData.lastChangeTime"></span></td>
+                   <td>最后修改人：<span ng-bind="dataModel.readyOnlyData.lastPeo"></span></td>
+               </tr>
+               <tr>
+                   <td >监管银行：<span ng-bind="dataModel.readyOnlyData.bank"></span></td>
+                   <td>监管金额：<span ng-bind="dataModel.readyOnlyData.money"></span></td>
+                   <td>待监管金额：<span ng-bind="dataModel.readyOnlyData.waitMoney"></span></td>
+               </tr>
+               <tr>
+                   <td>物业地址：<span ng-bind="dataModel.readyOnlyData.location"></span></td>
+               </tr>
+           </table>
+        </div>
+        <p class="white-p">当事人账号信息</p>
+        <div class="single-item no-border">
+            <div class="split">
+            <div class="item">
+                <label>收款人：</label>
+                <div>
+                    <input required ng-model="dataModel.partyInfo.recPeo" type="text" name="" />
+                </div>
+            </div>
+            <div class="item">
+                <label>银行账号：</label>
+                <div>
+                    <input required ng-model="dataModel.partyInfo.banNum" type="text"/>
+                </div>
+            </div>
+            <div class="item">
+                <label>开户银行：</label>
+                <div>
+                    <select required ng-model="dataModel.partyInfo.openBank" ng-options="item.key as item.value for item in dictionary.bankData">
+                    </select>
+                    <i>▼</i>
+                </div>
+            </div>
+        </div>
+            <div class="split">
+                <div class="item">
+                    <label>付款人：</label>
+                    <div>
+                        <input required  ng-model="dataModel.partyInfo.payPeo"  type="text" name="" />
+                    </div>
+                </div>
+                <div class="item">
+                    <label>银行账号：</label>
+                    <div>
+                        <input required ng-model="dataModel.partyInfo.payBankNum"  type="text"/>
+                    </div>
+                </div>
+                <div class="item">
+                    <label>开户银行：</label>
+                    <div>
+                        <select required ng-model="dataModel.partyInfo.payOpenBank" ng-options="item.key as item.value for item in dictionary.bankData">
+                        </select>
+                        <i>▼</i>
+                    </div>
+                </div>
+            </div>
+            <div>
+                <div class="split-xm">
+                    <p class="white-p">&nbsp;&nbsp;备注：</p>
+                    <textarea required ng-model="dataModel.partyInfo.remark" name=""></textarea>
+                </div>
+                <div class="split-xm">
+                    <label class="weight">附件:</label>
+                    <button class="sendFile">上传</button>
+                </div>
+                <div class="split-xm margin-r">
+                    <button ng-click="ui.cancel()">取消</button>
+                    <button ng-disabled="!baseForm.$valid" ng-click="ui.save()">保存</button>
+                    <button ng-click="ui.check()">审核</button>
+                </div>
+            </div>
+        </div>
+        </div>
+        <div class="foot">
+
+        </div>
+    </div>
+</div>
+</form>
+<script>
+    $(function(){
+
+    })
+</script>
+
+</body>
+</html>
