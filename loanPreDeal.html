@@ -13,17 +13,18 @@
     <link rel="stylesheet" type="text/css" href="css/countState.css" />
     <script type="text/javascript" src="js/jquery.min-1.9.1.js"></script>
     <script type="text/javascript" src="js/angular/angular-1.2.27.js"></script>
+    <script type="text/javascript" src="js/storage.js"></script>
     <script src="js/base-config/base-xm.js"></script>
     <script src="js/base-config/base.js"></script>
     <script src="js/preContractDeal/controller-preContractDeal.js"></script>
 </head>
 <body ng-controller="preContractDealCtrl">
-<form>
+<form novalidate>
     <div class="tb_container">
         <div class="top-xm fund-div">
             <p class="p_after">
-                <a href="" class="afterArrow">网签受理</a>
-                <a href="" class="afterArrow">网签信息</a>
+                <a href="" class="afterArrow">贷款预受理</a>
+                <a href="" class="afterArrow">贷款申请</a>
                 <a href="#" class="reload">刷新</a>
             </p>
         </div>
@@ -118,33 +119,31 @@
             <div class="cond-container">
                 <div class="readonly single-item">
                     <div class="split confirm-div">
-                        <button class="confirm">验证</button>
+                        <button ng-click="ui.check()" class="confirm">验证</button>
                         <div class="item">
                             <label>房源验证码：</label>
                             <div>
-                                <input required ng-disabled="true" ng-model="dataModel.houseInfo.code" class="border-input" type="text" />
+                                <input required ng-model="dataModel.houseInfo.code" class="border-input" type="text" />
                             </div>
                         </div>
                     </div>
-                    <div class="split">
+                    <div ng-repeat="item in dataModel.houseInfo.obligee" class="split">
                         <div class="item">
                             <label>权利人名称：</label>
                             <div>
-                                <input required ng-disabled="true" ng-model="dataModel.houseInfo.obligeeName" type="text" />
+                                <input required ng-disabled="true" ng-model="item.obligee_name" type="text" />
                             </div>
                         </div>
-                    </div>
-                    <div class="split">
                         <div class="item">
                             <label>证件类型：</label>
                             <div>
-                                <input required ng-disabled="true" ng-model="dataModel.houseInfo.identityType" type="text"/>
+                                <input required ng-disabled="true" ng-model="item.obligee_card_type" type="text"/>
                             </div>
                         </div>
                         <div class="item">
                             <label>证件号码：</label>
                             <div>
-                                <input required ng-disabled="true" ng-model="dataModel.houseInfo.identityNum" type="text" />
+                                <input required ng-disabled="true" ng-model="item.obligee_card_num" type="text" />
                             </div>
                         </div>
                     </div>
@@ -199,8 +198,8 @@
                 </div>
                 <div>
                     <div class="split-xm margin-r">
-                        <button >受理回执单</button>
-                        <button >提交</button>
+                        <button ng-click="ui.callback()">受理回执单</button>
+                        <button ng-click="ui.submit()">提交</button>
                     </div>
                 </div>
             </div>

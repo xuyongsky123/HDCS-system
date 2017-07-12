@@ -31,6 +31,9 @@ app.controller("menuCtrl", function($scope){
 				case '资金监管':
 					_url = 'data/zjjg.json';
 					break;
+				case '抵押贷款':
+					_url = 'data/dydk.json';
+					break;
 			}
 
 			//加载二级菜单

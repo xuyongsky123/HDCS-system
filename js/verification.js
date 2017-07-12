@@ -9,7 +9,12 @@ app.controller("veryInfoCtrl", function($scope){
 		  var r = window.location.search.substr(1).match(reg);
 		  if (r!=null)return decodeURIComponent(r[2]); 
 		  return null;
-		}
+		},
+        getRandomNum:function(Min,Max){    //随机数生成
+            var Range = Max - Min;   
+            var Rand = Math.random();   
+            return(Min + Math.round(Rand * Range)); 
+        }
 	};
 
 	$scope.state = {
@@ -60,7 +65,10 @@ app.controller("veryInfoCtrl", function($scope){
 		},	//检索相关信息数据
 		data_4:{
 			isPass:'',	//是否验证通过0是1否
-		}	//验证相关信息数据
+		},	//验证相关信息数据
+		other:{
+			code:''	//房源验证码
+		}
 	};
 
 	//原始数据
@@ -98,7 +106,10 @@ app.controller("veryInfoCtrl", function($scope){
 		},	//检索相关信息数据
 		data_4:{
 			isPass:'',	//是否验证通过0是1否
-		}	//验证相关信息数据
+		},	//验证相关信息数据
+		other:{
+			code:''	//房源验证码
+		}
 	}
 
 
@@ -146,6 +157,10 @@ app.controller("veryInfoCtrl", function($scope){
 					alert(x+'......'+y);
 				}
 			});
+		},
+		//生成房源验证码
+		createCode:function(){
+			$scope.dataModel.other.code=$scope.tools.getRandomNum(1,100000000000000000000);
 		},
 		//保存
 		save:function(){

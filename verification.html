@@ -254,10 +254,10 @@
 					<div class="item">
 						<label>房源验证码：</label>
 						<div class="code">
-							<input ng-disabled="!state.isShowSave" type="text" name="" />
+							<input required ng-disabled="!state.isShowSave" ng-model="dataModel.other.code" type="text" name="" />
 						</div>
 					</div>
-					<button ng-disabled="!state.isShowSave">生成验证码</button>
+					<button ng-click="ui.createCode()" ng-disabled="!state.isShowSave">生成验证码</button>
 				</div>
 
 				<div class="ot-top">

@@ -22,5 +22,11 @@
 		"name": "资金监管",
 		"url":"",
 		"status":"false"
+	},
+	{
+		"id": "huview932h",
+		"name": "抵押贷款",
+		"url":"",
+		"status":"false"
 	}
 ]
