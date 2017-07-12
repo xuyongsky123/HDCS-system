@@ -1,6 +1,6 @@
 //刷新iframe页面内容
 function refreshIframe(url){
-	document.myIframe.location = url;
+	$('#iframe').html('<iframe name="myIframe" src="'+url+'" width="100%" height="100%" frameborder="no" border="0" marginwidth="0" marginheight="0" scrolling="yes" allowtransparency="yes"></iframe>');
 }
 
 var app = angular.module("indexApp", []);
@@ -14,6 +14,9 @@ app.controller("menuCtrl", function($scope){
 	$scope.ui = {
 		//一级菜单点击
 		menuClick:function(item){
+			//初始化页-指向欢迎页
+			refreshIframe('welcome.html');
+
 			var _url;
 			switch(item.name){
 				case '系统管理':
@@ -56,8 +59,8 @@ app.controller("menuCtrl", function($scope){
 		},
 		//二级菜单点击
 		menuClick_1:function(item){
-			$('#iframe').html('<iframe name="myIframe" src="'+item.url+'" width="100%" height="100%" frameborder="no" border="0" marginwidth="0" marginheight="0" scrolling="yes" allowtransparency="yes"></iframe>')
-			//refreshIframe(item.url)
+			
+			refreshIframe(item.url);
 		}
 	};
 
