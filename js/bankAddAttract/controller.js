@@ -18,15 +18,21 @@ app.controller("bandAddCtrl",function($scope,$http){
             'state':0,
             'attrTotal':'',
             'supMoney':'',
-            'payTime':'',
-            'payMoney':'',
+            'payMethod':[
+                {
+                    'payTime':'',
+                    'payMoney':'',
+                }
+            ],
             'location':''
         },
-        data_payMoney:{
-            "payTime":"",
-            "payMoney":"",
-            "payNum":""
-        },
+        data_payMoney:[
+            {
+                "payTime":"",
+                "payMoney":"",
+                "payNum":""
+            }
+        ],
         readOnly:{
             "createTime":"111",
             "creator":" ",
@@ -57,6 +63,13 @@ app.controller("bandAddCtrl",function($scope,$http){
         }
     };
     $scope.ui={
+        addPayMoney:function(){
+            $scope.dataModel.data_payMoney.push({
+                payTime:"",
+                payMoney:"",
+                payNum:""
+            });
+        },
         save:function(){
 
             var _tmp = [];
@@ -93,21 +106,32 @@ app.controller("bandAddCtrl",function($scope,$http){
         console.log('有数据');
         console.log(_obtain);
 
+        //处理字段名不同
+        var _array = [];
+        for(var i=0;i<_obtain.dealInfo.payInfo.length;i++){
+            var _tt = {
+                payMoney:_obtain.dealInfo.payInfo[i].price,
+                payTime:_obtain.dealInfo.payInfo[i].time
+            };
+            _array.push(_tt);
+        }
+
         $scope.dataModel.data_addAttr = {
             'attrNum':_obtain.code,
             'bank':0,
             'state':0,
             'attrTotal':_obtain.dealInfo.houseTotalMoney,
             'supMoney':_obtain.dealInfo.lookMoney,
-            'payTime':'',
-            'payMoney':'',
+            'payMethod':_array,
             'location':''
         };
-        $scope.dataModel.data_payMoney={
-            "payTime":"",
-            "payMoney":"",
-            "payNum":""
-        },
+        $scope.dataModel.data_payMoney=[
+            {
+                "payTime":"",
+                "payMoney":"",
+                "payNum":""
+            }
+        ];
         $scope.dataModel.readOnly={
             "createTime":new Date(),
             "creator":"管理员",
@@ -115,7 +139,7 @@ app.controller("bandAddCtrl",function($scope,$http){
             "endTime":_obtain.siteTime,
             "endPeo":"管理员",
             "checkTime":_obtain.decisionTime
-        },
+        };
         $scope.dataModel.sellerInfo={
             "name":_obtain.sellerInfo[0].name,
             "phone":_obtain.sellerInfo[0].phone,
@@ -124,7 +148,7 @@ app.controller("bandAddCtrl",function($scope,$http){
             "receiver":"",
             "houseNum":_obtain.houseInfo.rightNum,
             "identityCard":_obtain.sellerInfo[0].identity
-        },
+        };
         $scope.dataModel.buyerInfo={
             "name":_obtain.buyerInfo[0].name,
             "phone":_obtain.buyerInfo[0].phone,
@@ -132,7 +156,7 @@ app.controller("bandAddCtrl",function($scope,$http){
             "bankNum":"",
             "recPeo":"",
             "identityCard":_obtain.sellerInfo[0].identity
-        },
+        };
         $scope.dataModel.contractText={
             "textarea":_obtain.contractInfo.otherMsg
         }

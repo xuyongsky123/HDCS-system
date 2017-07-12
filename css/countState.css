@@ -407,10 +407,10 @@ input,select{
 /*.item {float:left;width: 370px;height: 36px;margin-top: 20px;margin-right: 30px;font-size: 16px;color: #333;}*/
 .item:after {content: '';display: table;clear: both;}
 .item-long {width: 680px;}
-.item > label {width: 120px;float: left;height: 36px;line-height: 36px;text-align:right;}
+.item > label {width: 124px;float: left;height: 36px;line-height: 36px;text-align:right;}
 .item > label.more {line-height: 18px;}
 /*.item > label {width: 174px;float: left;height: 36px;line-height: 36px;text-align:right;}*/
-.item > div {margin-left: 120px;height: 36px;border:1px solid #979797;border-radius: 2px;position: relative;overflow: hidden;zoom:1;}
+.item > div {margin-left: 124px;height: 36px;border:1px solid #979797;border-radius: 2px;position: relative;overflow: hidden;zoom:1;}
 .item > div input[type="text"] {height: 36px;line-height: 36px;text-align:left;border:none;background:none;width: 100%;padding:0 10px; color: #666;}
 .item > div select {height:36px;border:none;background:none;text-align:center;width: 100%;-webkit-appearance:none;text-indent:0.5em;color: #666;}
 .item > button {display: block;height: 36px;line-height: 36px;color: #333;padding-left: 70px;background:url(image/xy/add-icon.png) 34px 50% no-repeat;background-size: 24px 24px;margin-left: 76px;}
@@ -418,7 +418,12 @@ input,select{
 .item > div > i {position: absolute;height: 34px;line-height:34px;width: 30px;font-style: normal;font-size: 12px;top:0;right:0;bottom: 0;text-align: center;display: block;z-index: 10;pointer-events: none;background-color: #fff;cursor: pointer;}
 .item > div input[disabled="disabled"] , .item > div select[disabled="disabled"]{color: #bbb;}
 
-.item > div input[disabled="disabled"] , .item > div select[disabled="disabled"]{color: #bbb;}
+table.table-item tr th {font-weight: normal;}
+table.table-item tr td {text-align: center;}
+table.table-item tr td .item {float: none;display: inline-block;margin:0;width: 386px;}
+table.table-item tr td .item > label {width: 170px;}
+table.table-item tr td .item > div {margin-left: 170px;}
+
 .split:after {content: '';display: table;clear: both;}
 .fund-div .fund-p{
   padding-left:40px;
@@ -444,6 +449,10 @@ input,select{
 .fund-border .white-p{
   border:none;
   padding-left: 0;
+  position: relative;
+}
+.white-p button {
+  top: 6px;
 }
 .fund-border th{
   color:#333;
@@ -513,6 +522,9 @@ button{
 button[disabled="disabled"]{
   background-color:#adcdeb;
   cursor:default;
+}
+.white-p button[disabled="disabled"] {
+  background-color:#fff;
 }
 .fj{
   margin-left:20px;

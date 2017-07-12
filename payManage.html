@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html>
-<head lang="en">
+<head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
@@ -15,6 +15,7 @@
     <script type="text/javascript" src="js/jquery.min-1.9.1.js"></script>
     <script src="js/paging/paging.js"></script>
     <script type="text/javascript" src="js/angular/angular-1.2.27.js"></script>
+    <script src="js/storage.js"></script>
 
 </head>
 <body>
@@ -87,6 +88,18 @@
     </div>
 </div>
 <script>
+function toPage(_num){
+    var _tmp={};
+    for(var i=0;i<storage.getStorage('fkData').length;i++){
+        if(storage.getStorage('fkData')[i].addPay.contractNum == _num){
+            _tmp = storage.getStorage('fkData')[i];
+        }
+    }
+    storage.removeStorage('fkDataSingle')
+    storage.setStorage('fkDataSingle',_tmp);
+
+    window.location.href = 'addPayLook.html?order_num='+_num;
+}
     $(function(){
         /*table样式设置*/
         $('tr:even').css('background','#f5f5f5');
@@ -100,25 +113,25 @@
                         "<th>合同编号</th>" +
                         " <th>监管银行账号</th>" +
                         "<th>银行名称</th> " +
-                        "<th>监管银行原余额</th> " +
-                        "<th>监管银行余额</th> " +
+                        //"<th>监管银行原余额</th> " +
+                        //"<th>监管银行余额</th> " +
                         "<th>发生余额</th> " +
                         "<th>到账日期</th> " +
                         "<th>发生时间</th>" +
                         " <th>付款时间</th>" +
                     " </tr>";
-            for(var i=0;i<data.info.length;i++){
+            for(var i=0;i<data.length;i++){
                 _html += "<tr>" +
-                        "<td>"+data.info[i].action+"</td>" +
-                        "<td><a href='addPayLook.html' class='underline-a'>"+data.info[i].contractNum+"</a></td>" +
-                        "<td>"+data.info[i].superviseCount+"</td>" +
-                        "<td>"+data.info[i].bankName+"</td>" +
-                        "<td>"+data.info[i].countYy+"</td>" +
-                        "<td>"+data.info[i].countY+"</td>" +
-                        "<td>"+data.info[i].countF+"</td>" +
-                        "<td>"+data.info[i].toTime+"</td>" +
-                        "<td>"+data.info[i].startTime+"</td>" +
-                        "<td>"+data.info[i].payTime+"</td>" +
+                        "<td>"+data[i].action+"</td>" +
+                        "<td><a href='javascript:toPage(\""+data[i].contractNum+"\")' class='underline-a'>"+data[i].contractNum+"</a></td>" +
+                        "<td>"+data[i].superviseCount+"</td>" +
+                        "<td>"+data[i].bankName+"</td>" +
+                        //"<td>"+data[i].countYy+"</td>" +
+                        //"<td>"+data[i].countY+"</td>" +
+                        "<td>"+data[i].countF+"</td>" +
+                        "<td>"+data[i].toTime+"</td>" +
+                        "<td>"+data[i].startTime+"</td>" +
+                        "<td>"+data[i].payTime+"</td>" +
                         "</tr>";
             }
             $(".payManage-table").html(_html);
@@ -127,13 +140,12 @@
             $('tr:even').css('background','#f5f5f5');
         };
         /*发送ajax请求*/
-        $.ajax({
+        /*$.ajax({
             url:'data/payManage.json',
             type:'post',
             success:function(data){
                 data = JSON.parse(data);
                 ajax_suc(data);
-                 /*分页设置*/
                 $('#pageTool').Paging({
                     pagesize:10,
                     count:data.total,
@@ -142,7 +154,6 @@
                         $('.currentPage').text(page);
                     }
                 });
-                /*点击分页时候跟新页面*/
 
                 $('.totalCount').text(data.total);
                 var totalPage=Math.ceil(data.total/15);
@@ -152,7 +163,40 @@
             error:function(errorMeg){
                 alert(errorMeg);
             }
-        });
+        });*/
+
+
+        /*从本地拿数据*/
+        var _obtainFK = storage.getStorage('fkData');
+        if(_obtainFK){
+            
+            if(_obtainFK.length){
+                console.log('有数据');
+
+                var _info=[];
+                for(var i=0;i<_obtainFK.length;i++){
+                    var _contract = {};
+                    _contract.action = "付款";
+                    _contract.contractNum = _obtainFK[i].addPay.contractNum;
+                    _contract.superviseCount = _obtainFK[i].partyInfo.banNum;
+                    _contract.bankName = _obtainFK[i].readyOnlyData.bank;
+                    //_contract.countYy = _obtainFK[i].data_addAttr.bank;
+                    //_contract.countY = _obtainFK[i].readOnly.creator;
+                    _contract.countF = _obtainFK[i].payedAnother.payMoney;
+                    _contract.toTime = _obtainFK[i].payedAnother.receiveDate;
+                    _contract.startTime = _obtainFK[i].payedAnother.payDate;  //发生时间就是付款时间（这里根据需求而定）
+                    _contract.payTime = _obtainFK[i].payedAnother.payDate;
+
+                    _info.push(_contract);
+                }
+
+                ajax_suc(_info,1);
+            }else{
+                console.log('无数据');
+            }
+        }else{
+            console.log('无数据');
+        }
     })
 </script>
 

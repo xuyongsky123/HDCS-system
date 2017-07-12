@@ -13,22 +13,28 @@ app.controller("bandAddCtrl",function($scope,$http){
     };
     $scope.dataModel={
         data_addAttr:{
-            'attrNum':'201708090001',
+            'attrNum':'',
             'bank':0,
-            'state':2,
-            'attrTotal':'1,000,000',
-            'supMoney':'2,000,000',
-            'payTime':'2017-07-06',
-            'payMoney':'2,000,000',
-            'location':'上海市徐汇区漕溪北路222号'
+            'state':0,
+            'attrTotal':'',
+            'supMoney':'',
+            'payMethod':[
+                {
+                    'payTime':'',
+                    'payMoney':'',
+                }
+            ],
+            'location':''
         },
-        data_payMoney:{
-            "payTime":"2017-02-05",
-            "payMoney":"4,000,000",
-            "payNum":"201707080004"
-        },
+        data_payMoney:[
+            {
+                "payTime":"",
+                "payMoney":"",
+                "payNum":""
+            }
+        ],
         readOnly:{
-            "createTime":"",
+            "createTime":"111",
             "creator":" ",
             "auditor":" ",
             "endTime":" ",
@@ -36,27 +42,34 @@ app.controller("bandAddCtrl",function($scope,$http){
             "checkTime":" "
         },
         sellerInfo:{
-            "name":"张三",
-            "phone":"18817878765",
-            "bankName":"中国银行",
-            "bankNum":"6214000000009876",
-            "receiver":"李四",
-            "houseNum":"20170807999",
-            "identityCard":"522424199403063880"
+            "name":"",
+            "phone":"",
+            "bankName":0,
+            "bankNum":"",
+            "receiver":"",
+            "houseNum":"",
+            "identityCard":""
         },
         buyerInfo:{
-            "name":"赵四",
-            "phone":"18817828965",
-            "bankName":"招商银行",
-            "bankNum":"6214000000003556",
-            "recPeo":"张三三",
-            "identityCard":"522424199403060089"
+            "name":"",
+            "phone":"",
+            "bankName":0,
+            "bankNum":"",
+            "recPeo":"",
+            "identityCard":""
         },
         contractText:{
-            "textarea":"测试文字"
+            "textarea":""
         }
     };
     $scope.ui={
+        addPayMoney:function(){
+            $scope.dataModel.data_payMoney.push({
+                payTime:"",
+                payMoney:"",
+                payNum:""
+            });
+        },
         receiveLoan:function(){
             alert("即将跳转至银行请求放款页面");
         },

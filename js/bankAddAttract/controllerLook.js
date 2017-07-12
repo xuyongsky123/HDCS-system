@@ -27,17 +27,23 @@ app.controller("bandAddCtrl",function($scope,$http){
             'state':0,
             'attrTotal':'',
             'supMoney':'',
-            'payTime':'',
-            'payMoney':'2,000,000',
+            'payMethod':[
+                {
+                    'payTime':'',
+                    'payMoney':'',
+                }
+            ],
             'location':''
         },
-        data_payMoney:{
-            "payTime":"",
-            "payMoney":"",
-            "payNum":""
-        },
+        data_payMoney:[
+            {
+                "payTime":"",
+                "payMoney":"",
+                "payNum":""
+            }
+        ],
         readOnly:{
-            "createTime":"",
+            "createTime":"111",
             "creator":" ",
             "auditor":" ",
             "endTime":" ",
@@ -47,7 +53,7 @@ app.controller("bandAddCtrl",function($scope,$http){
         sellerInfo:{
             "name":"",
             "phone":"",
-            "bankName":"",
+            "bankName":0,
             "bankNum":"",
             "receiver":"",
             "houseNum":"",
@@ -56,7 +62,7 @@ app.controller("bandAddCtrl",function($scope,$http){
         buyerInfo:{
             "name":"",
             "phone":"",
-            "bankName":"",
+            "bankName":0,
             "bankNum":"",
             "recPeo":"",
             "identityCard":""
@@ -73,17 +79,23 @@ app.controller("bandAddCtrl",function($scope,$http){
             'state':0,
             'attrTotal':'',
             'supMoney':'',
-            'payTime':'',
-            'payMoney':'2,000,000',
+            'payMethod':[
+                {
+                    'payTime':'',
+                    'payMoney':'',
+                }
+            ],
             'location':''
         },
-        data_payMoney:{
-            "payTime":"",
-            "payMoney":"",
-            "payNum":""
-        },
+        data_payMoney:[
+            {
+                "payTime":"",
+                "payMoney":"",
+                "payNum":""
+            }
+        ],
         readOnly:{
-            "createTime":"",
+            "createTime":"111",
             "creator":" ",
             "auditor":" ",
             "endTime":" ",
@@ -93,7 +105,7 @@ app.controller("bandAddCtrl",function($scope,$http){
         sellerInfo:{
             "name":"",
             "phone":"",
-            "bankName":"",
+            "bankName":0,
             "bankNum":"",
             "receiver":"",
             "houseNum":"",
@@ -102,7 +114,7 @@ app.controller("bandAddCtrl",function($scope,$http){
         buyerInfo:{
             "name":"",
             "phone":"",
-            "bankName":"",
+            "bankName":0,
             "bankNum":"",
             "recPeo":"",
             "identityCard":""
@@ -113,6 +125,13 @@ app.controller("bandAddCtrl",function($scope,$http){
     };
 
     $scope.ui={
+        addPayMoney:function(){
+            $scope.dataModel.data_payMoney.push({
+                payTime:"",
+                payMoney:"",
+                payNum:""
+            });
+        },
         save:function(){
             var _tmp = [];
             
@@ -125,7 +144,6 @@ app.controller("bandAddCtrl",function($scope,$http){
 
                     for(var i=0;i<_tmp.length;i++){
                         if(_tmp[i].data_addAttr.attrNum == _currentNum.data_addAttr.attrNum){
-                            console.log('save ok')
                             _tmp[i] = $scope.dataModel;
                         }
                     }

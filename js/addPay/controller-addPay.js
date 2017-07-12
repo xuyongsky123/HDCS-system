@@ -16,11 +16,13 @@ app.controller("addPayCtrl",function($scope,$http){
            contractNum:"",
            state:0
        },
-        payed:{
-            payTime:"2017-06-08",
-            payMoney:"1,000,000",
-            payNum:"201709080003"
-        },
+        payed:[
+            {
+                payTime:"",
+                payMoney:"",
+                payNum:""
+            }
+        ],
         payedAnother:{
             payDate:"",
             payMoney:"",
@@ -28,14 +30,14 @@ app.controller("addPayCtrl",function($scope,$http){
             receiveDate:""
         },
         readyOnlyData: {
-            createTime: "2017-08-09",
-            creator: "管理员",
-            lastChangeTime: "2017-08-10",
-            lastPeo: "管理员",
-            bank: "中国银行",
-            money: "1,000,000",
-            waitMoney: "1,000,000",
-            location: "乌鲁木齐市水磨沟区"
+            createTime: "",
+            creator: "",
+            lastChangeTime: "",
+            lastPeo: "",
+            bank: "",
+            money: "",
+            waitMoney: "",
+            location: ""
         },
         partyInfo: {
             recPeo: "",
@@ -53,14 +55,54 @@ app.controller("addPayCtrl",function($scope,$http){
             window.location.reload();
         },
         save:function(){
+            var _tmp = [];
+            
+            if(storage.getStorage('fkData')){
+
+                if(storage.getStorage('fkData').length){
+                    console.log('有数据');
+                    _tmp = storage.getStorage('fkData');
+                    _tmp.push($scope.dataModel);
+                }else{
+                    console.log('无数据');
+                    _tmp.push($scope.dataModel);
+                }
+            }else{
+                console.log('无数据');
+                _tmp.push($scope.dataModel);
+            }
+            
+            storage.setStorage('fkData',_tmp);
+
             window.location.href="payManage.html";
         }
 
     };
-    /*实际付款数据模拟*/
-    $http.post('data/bankAddContract.json').then(function(data){
-        $scope.dataModel.readOnly=data.data;
-    },function(){
+    
 
-    });
+    //数据模拟链接
+    if(storage.getStorage('htDataSingle')){
+        var _htDataSingle = storage.getStorage('htDataSingle');
+
+        $scope.dataModel.payed=_htDataSingle.data_payMoney;
+        $scope.dataModel.readyOnlyData={
+            createTime:_htDataSingle.readOnly.createTime,
+            creator:_htDataSingle.readOnly.creator,
+            lastChangeTime:_htDataSingle.readOnly.endTime,
+            lastPeo:_htDataSingle.readOnly.endPeo,
+            bank:bankData[_htDataSingle.data_addAttr.bank].value,
+            money:_htDataSingle.data_addAttr.supMoney,
+            waitMoney:_htDataSingle.data_addAttr.attrTotal,
+            location:_htDataSingle.data_addAttr.location
+        }
+    }
 });
+
+
+
+
+
+
+
+
+

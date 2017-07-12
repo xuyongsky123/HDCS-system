@@ -71,20 +71,6 @@
                 </div>
             </div>
             <div class="split">
-                <div class="item">
-                    <label>付款时间：</label>
-                    <div>
-                        <input required ng-model="dataModel.data_addAttr.payTime" type="text" value=""/>
-                    </div>
-                </div>
-                <div class="item">
-                    <label>付款金额：</label>
-                    <div>
-                        <input required ng-model="dataModel.data_addAttr.payMoney" type="text"/>
-                    </div>
-                </div>
-            </div>
-            <div class="split">
                 <div class="item item-long">
                     <label>物业地址：</label>
                     <div >
@@ -93,27 +79,53 @@
                 </div>
             </div>
         </div>
+        <div class="readonly single-item">
+            <p class="white-p">付款方式</p>
+            <table class="table-item">
+                <tr>
+                    <th colspan="2">房款分<span ng-bind="dataModel.data_addAttr.payMethod.length"></span>次付清</th>
+                </tr>
+                <tr ng-repeat="item in dataModel.data_addAttr.payMethod">
+                    <td>
+                        <div class="item">
+                            <label>第{{ $index+1 }}次最后付款时间：</label>
+                            <div class="x-item">
+                                <input ng-disabled="true" ng-model="item.payTime" type="text"/>
+                            </div>
+                        </div>
+                    </td>
+                    <td>
+                        <div class="item">
+                            <label>第{{ $index+1 }}次付款金额：</label>
+                            <div class="x-item">
+                                <input ng-disabled="true" ng-model="item.payMoney" type="text"/>
+                            </div>
+                        </div>
+                    </td>
+                </tr>
+            </table>
+        </div>
 
         <div class="single-item">
-            <p class="white-p">实际付款</p>
-            <div class="split">
+            <p class="white-p">实际付款<button ng-click="ui.addPayMoney()" class="add_btn contract-add">新增</button></p>
+            <div ng-repeat="item in dataModel.data_payMoney" class="split">
                 <div class="item">
-                    <label>付款时间：</label>
+                    <label>第{{ $index+1 }}次付款时间：</label>
                     <div>
                         <!--<input required ng-model="dataModel.data_payMoney.payTime" onfocus="WdatePicker({isShowWeek:true})" type="text" name="" />-->
-                        <input required ng-model="dataModel.data_payMoney.payTime" type="text" name="" />
+                        <input required ng-model="item.payTime" type="text" name="" />
                     </div>
                 </div>
                 <div class="item">
-                    <label>付款金额：</label>
+                    <label>第{{ $index+1 }}付款金额：</label>
                     <div>
-                        <input required ng-model="dataModel.data_payMoney.payMoney" type="text"/>
+                        <input required ng-model="item.payMoney" type="text"/>
                     </div>
                 </div>
                 <div class="item">
-                    <label>付款单号：</label>
+                    <label>第{{ $index+1 }}付款单号：</label>
                     <div>
-                        <input required ng-model="dataModel.data_payMoney.payNum" type="text"/>
+                        <input required ng-model="item.payNum" type="text"/>
                     </div>
                 </div>
             </div>

@@ -14,6 +14,7 @@
     <link rel="stylesheet" type="text/css" href="css/countState.css" />
     <script type="text/javascript" src="js/jquery.min-1.9.1.js"></script>
     <script type="text/javascript" src="js/angular/angular-1.2.27.js"></script>
+    <script src="js/storage.js"></script>
     <script src="js/My97DatePicker/WdatePicker.js"></script>
     <script src="js/base-config/base-xm.js"></script>
     <script src="js/addPay/controller-addPay.js"></script>
@@ -65,10 +66,10 @@
                    <td>付款金额</td>
                    <td>付款单号</td>
                </tr>
-               <tr>
-                   <td required ng-bind="dataModel.payed.payTime"></td>
-                   <td required ng-bind="dataModel.payed.payMoney"></td>
-                   <td required ng-bind="dataModel.payed.payNum"></td>
+               <tr ng-repeat="item in dataModel.payed track by $index">
+                   <td required ng-bind="item.payTime"></td>
+                   <td required ng-bind="item.payMoney"></td>
+                   <td required ng-bind="item.payNum"></td>
                </tr>
            </table>
         </div>
