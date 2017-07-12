@@ -138,6 +138,27 @@ function toPage(_num){
             /*table斑马线设置*/
             $('tr:even').css('background','#f5f5f5');
         };
+
+
+        var ajax_suc_head=function(){
+            var _html ="" +
+                    "<tr class='tr_th'> " +
+                        "<th>动作</th> " +
+                        "<th>合同编号</th>" +
+                        " <th>监管银行账号</th>" +
+                        "<th>银行名称</th> " +
+                        //"<th>监管银行原余额</th> " +
+                        //"<th>监管银行余额</th> " +
+                        "<th>发生余额</th> " +
+                        "<th>到账日期</th> " +
+                        "<th>发生时间</th>" +
+                        " <th>付款时间</th>" +
+                    " </tr>";
+            $(".payManage-table").html(_html);
+
+            /*table斑马线设置*/
+            $('tr:even').css('background','#f5f5f5');
+        }
         /*发送ajax请求*/
         /*$.ajax({
             url:'data/payManage.json',
@@ -192,9 +213,11 @@ function toPage(_num){
                 ajax_suc(_info,1);
             }else{
                 console.log('无数据');
+                ajax_suc_head();
             }
         }else{
             console.log('无数据');
+            ajax_suc_head();
         }
     })
 </script>
