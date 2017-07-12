@@ -19,6 +19,9 @@ app.controller("menuCtrl", function($scope){
 				case '系统管理':
 					_url = '';
 					break;
+				case '贷款预受理':
+					_url = 'data/dkysl.json';
+					break;
 				case '房源公示':
 					_url = 'data/fygs.json';
 					break;
