@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html ng-app="loanSubmitApp">
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -13,8 +13,11 @@
     <link rel="stylesheet" type="text/css" href="css/countState.css" />
     <script type="text/javascript" src="js/jquery.min-1.9.1.js"></script>
     <script type="text/javascript" src="js/angular/angular-1.2.27.js"></script>
+    <script src="js/base-config/base.js"></script>
+    <script src="js/base-config/base-xm.js"></script>
+    <script src="js/loanAbout/loanSubmit.js"></script>
 </head>
-<body>
+<body ng-controller="loanSubmitCtrl">
 <form>
     <div class="tb_container">
         <div class="top-xm fund-div">
@@ -33,13 +36,13 @@
                         <div class="item">
                             <label>权利人名称：</label>
                             <div>
-                                <input type="text" />
+                                <input required ng-disabled="true" ng-model="dataModel.houseInfo.obligeeName"  type="text" />
                             </div>
                         </div>
                         <div class="item">
                             <label>权利人名称：</label>
                             <div>
-                                <input type="text"/>
+                                <input required ng-disabled="true" ng-model="dataModel.houseInfo.obligeeName2" type="text"/>
                             </div>
                         </div>
                     </div>
@@ -47,13 +50,13 @@
                         <div class="item">
                             <label>证件类型：</label>
                             <div>
-                                <input type="text" />
+                                <input required ng-disabled="true" ng-model="dataModel.houseInfo.identityType" type="text" />
                             </div>
                         </div>
                         <div class="item">
                             <label>证件号码：</label>
                             <div>
-                                <input type="text" />
+                                <input required ng-disabled="true" ng-model="dataModel.houseInfo.identityNum" type="text" />
                             </div>
                         </div>
                     </div>
@@ -61,19 +64,19 @@
                         <div class="item">
                             <label>房权证号：</label>
                             <div>
-                                <input class="big" type="text" />
+                                <input required ng-disabled="true" ng-model="dataModel.houseInfo.houseNum" class="big" type="text" />
                             </div>
                         </div>
                         <div class="item">
                             <label>产权面积(m²)：</label>
                             <div>
-                                <input class="big" type="text" />
+                                <input required ng-disabled="true" ng-model="dataModel.houseInfo.houseArea" class="big" type="text" />
                             </div>
                         </div>
                         <div class="item">
                             <label>套内面积(m²)：</label>
                             <div>
-                                <input class="big" type="text" />
+                                <input required ng-disabled="true" ng-model="dataModel.houseInfo.insideArea" class="big" type="text" />
                             </div>
                         </div>
                     </div>
@@ -81,19 +84,19 @@
                         <div class="item">
                             <label>分摊面积：</label>
                             <div>
-                                <input class="big" type="text" />
+                                <input required ng-disabled="true" ng-model="dataModel.houseInfo.outsideArea" class="big" type="text" />
                             </div>
                         </div>
                         <div class="item">
                             <label>总层数：</label>
                             <div>
-                                <input class="big" type="text" />
+                                <input required ng-disabled="true" ng-model="dataModel.houseInfo.totalLayer" class="big" type="text" />
                             </div>
                         </div>
                         <div class="item">
                             <label>所在层：</label>
                             <div>
-                                <input class="big" type="text" />
+                                <input required ng-disabled="true" ng-model="dataModel.houseInfo.layer" class="big" type="text" />
                             </div>
                         </div>
                     </div>
@@ -101,21 +104,14 @@
                         <div class="item">
                             <label>房屋地址：</label>
                             <div>
-                                <input class="big" type="text" />
+                                <input required ng-disabled="true" ng-model="dataModel.houseInfo.houseLocation" class="big" type="text" />
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
 
-            <p class="blue_p">不动产信息</p>
-            <div class="cond-container">
-                <div class="single-item sSingleItem">
-                    <label>不动产证上传：</label>
-                    <div class="submitDiv"></div>
-                    <label class="label2"><span class="redStar">*</span>上传图片分辨率不要低于1080P</label>
-                </div>
-            </div>
+
 
             <p class="blue_p">银行信息</p>
             <div class="cond-container">
@@ -124,22 +120,30 @@
                         <div class="item">
                             <label>申请银行：</label>
                             <div>
-                                <select></select>
+                                <select required ng-model="dataModel.bankInfo.applyBank" ng-options="item.key as item.value for item in dictionary.bankData"></select>
                                 <i>▼</i>
                              </div>
                         </div>
                         <div class="item">
                             <label>申请金额：</label>
                             <div>
-                                <input type="text" />
+                                <input required ng-model="dataModel.bankInfo.applyMoney" type="text" />
                             </div>
                         </div>
                     </div>
                 </div>
-                <div>
-                    <div class="split-xm margin-r">
-                        <button >提交</button>
-                    </div>
+            </div>
+            <p class="blue_p">不动产信息</p>
+            <div class="cond-container">
+                <div class="single-item sSingleItem">
+                    <label>不动产证上传：</label>
+                    <div class="submitDiv"></div>
+                    <label class="label2"><span class="redStar">*</span>上传图片分辨率不要低于1080P</label>
+                </div>
+            </div>
+            <div>
+                <div class="split-xm margin-r">
+                    <button ng-click="ui.submit()">提交</button>
                 </div>
             </div>
             <div class="foot">

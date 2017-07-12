@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html ng-app="loanCheckApp">
 <head lang="en">
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -15,9 +15,11 @@
     <script type="text/javascript" src="js/jquery.min-1.9.1.js"></script>
     <script src="js/paging/paging.js"></script>
     <script type="text/javascript" src="js/angular/angular-1.2.27.js"></script>
-
+    <script src="js/base-config/base.js"></script>
+    <script src="js/base-config/base-xm.js"></script>
+    <script src="js/loanAbout/controller-loanCheck.js"></script>
 </head>
-<body>
+<body ng-controller="loanCheckCtrl">
 <div class="tb_container">
     <div class="top-xm fund-div">
         <p class="fund-p">
@@ -35,26 +37,26 @@
         </p>
     </div>
     <div class="table-border sign-div fund-border loanCheck">
-        <p class="blue_p">银行信息</p>
+        <p class="blue_p">当事人信息</p>
         <div class="cond-container">
             <div class="single-item readonly">
                 <div class="split">
                     <div class="item">
                         <label>姓名：</label>
                         <div>
-                            <input type="text"/>
+                            <input required ng-disabled="true" ng-model="dataModel.userInfo.name" type="text"/>
                         </div>
                     </div>
                     <div class="item">
                         <label>电话：</label>
                         <div>
-                            <input required ng-disabled="true" ng-model="dataModel.houseInfo.obligeeName" type="text" />
+                            <input required ng-disabled="true" ng-model="dataModel.userInfo.phone" type="text" />
                         </div>
                     </div>
                     <div class="item">
                         <label>证件类型：</label>
                         <div>
-                            <input required ng-disabled="true" ng-model="dataModel.houseInfo.obligeeName" type="text" />
+                            <input required ng-disabled="true" ng-model="dataModel.userInfo.identity" type="text" />
                         </div>
                     </div>
                 </div>
@@ -62,19 +64,19 @@
                     <div class="item">
                         <label>月收入(税前)：</label>
                         <div>
-                            <input type="text"/>
+                            <input required ng-disabled="true" ng-model="dataModel.userInfo.earning" type="text"/>
                         </div>
                     </div>
                     <div class="item">
                         <label>证件号码：</label>
                         <div>
-                            <input required ng-disabled="true" ng-model="dataModel.houseInfo.obligeeName" type="text" />
+                            <input required ng-disabled="true" ng-model="dataModel.userInfo.identityNum" type="text" />
                         </div>
                     </div>
                     <div class="item">
                         <label>公积金账号：</label>
                         <div>
-                            <input required ng-disabled="true" ng-model="dataModel.houseInfo.obligeeName" type="text" />
+                            <input required ng-disabled="true" ng-model="dataModel.userInfo.fundNum" type="text" />
                         </div>
                     </div>
                 </div>
@@ -82,7 +84,7 @@
                     <div class="item">
                         <label>工作单位：</label>
                         <div>
-                            <input type="text"/>
+                            <input required ng-disabled="true" ng-model="dataModel.userInfo.workUnit" type="text"/>
                         </div>
                     </div>
                 </div>
@@ -90,7 +92,7 @@
                     <div class="item">
                         <label>联系地址：</label>
                         <div>
-                            <input type="text"/>
+                            <input required ng-disabled="true" ng-model="dataModel.userInfo.contact" type="text"/>
                         </div>
                     </div>
                 </div>
@@ -104,13 +106,13 @@
                     <div class="item">
                         <label>申请银行：</label>
                         <div>
-                            <input type="text"/>
+                            <input required ng-disabled="true" ng-model="dataModel.bankInfo.applyBank" type="text"/>
                         </div>
                     </div>
                     <div class="item">
                         <label>申请金额：</label>
                         <div>
-                            <input required ng-disabled="true" ng-model="dataModel.houseInfo.obligeeName" type="text" />
+                            <input required ng-disabled="true" ng-model="dataModel.bankInfo.applyMoney" type="text" />
                         </div>
                     </div>
                 </div>
@@ -124,13 +126,13 @@
                     <div class="item">
                         <label>权利人名称：</label>
                         <div>
-                            <input type="text"/>
+                            <input required ng-disabled="true" ng-model="dataModel.houseInfo.obligeeName1" type="text"/>
                         </div>
                     </div>
                     <div class="item">
                         <label>权利人名称：</label>
                         <div>
-                            <input required ng-disabled="true" ng-model="dataModel.houseInfo.obligeeName" type="text" />
+                            <input required ng-disabled="true" ng-model="dataModel.houseInfo.obligeeName2" type="text" />
                         </div>
                     </div>
                 </div>
@@ -138,13 +140,14 @@
                     <div class="item">
                         <label>证件类型：</label>
                         <div>
-                            <input type="text"/>
+                            <select required ng-disabled="true" ng-model="dataModel.houseInfo.identityType"></select>
+
                         </div>
                     </div>
                     <div class="item">
                         <label>证件号码：</label>
                         <div>
-                            <input required ng-disabled="true" ng-model="dataModel.houseInfo.obligeeName" type="text" />
+                            <input required ng-disabled="true" ng-model="dataModel.houseInfo.identityNum" type="text" />
                         </div>
                     </div>
                 </div>
@@ -152,19 +155,19 @@
                     <div class="item">
                         <label>房权证号：</label>
                         <div>
-                            <input type="text"/>
+                            <input required ng-disabled="true" ng-model="dataModel.houseInfo.houseNum" type="text"/>
                         </div>
                     </div>
                     <div class="item">
                         <label>产权面积：</label>
                         <div>
-                            <input required ng-disabled="true" ng-model="dataModel.houseInfo.obligeeName" type="text" />
+                            <input required ng-disabled="true" ng-model="dataModel.houseInfo.houseArea" type="text" />
                         </div>
                     </div>
                     <div class="item">
                         <label>套内面积：</label>
                         <div>
-                            <input required ng-disabled="true" ng-model="dataModel.houseInfo.obligeeName" type="text" />
+                            <input required ng-disabled="true" ng-model="dataModel.houseInfo.insideArea" type="text" />
                         </div>
                     </div>
                 </div>
@@ -172,19 +175,19 @@
                     <div class="item">
                         <label>分摊面积：</label>
                         <div>
-                            <input type="text"/>
+                            <input required ng-disabled="true" ng-model="dataModel.houseInfo.outsideArea" type="text"/>
                         </div>
                     </div>
                     <div class="item">
                         <label>总层数：</label>
                         <div>
-                            <input required ng-disabled="true" ng-model="dataModel.houseInfo.obligeeName" type="text" />
+                            <input required ng-disabled="true" ng-model="dataModel.houseInfo.totalLayer" type="text" />
                         </div>
                     </div>
                     <div class="item">
                         <label>所在层：</label>
                         <div>
-                            <input required ng-disabled="true" ng-model="dataModel.houseInfo.obligeeName" type="text" />
+                            <input required ng-disabled="true" ng-model="dataModel.houseInfo.layer" type="text" />
                         </div>
                     </div>
                 </div>
@@ -192,7 +195,7 @@
                     <div class="item">
                         <label>房屋地址：</label>
                         <div>
-                            <input type="text"/>
+                            <input required ng-disabled="true" ng-model="dataModel.houseInfo.houseLocation" type="text"/>
                         </div>
                     </div>
                 </div>

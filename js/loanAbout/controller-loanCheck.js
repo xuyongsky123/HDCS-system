@@ -2,8 +2,8 @@
  * Created by Administrator on 2017/7/7.
  */
 /*angular模块部分*/
-var app=angular.module('loanRecheckApp',[]);
-app.controller("loanRecheckCtrl",function($scope,$http){
+var app=angular.module('loanCheckApp',[]);
+app.controller("loanCheckCtrl",function($scope,$http){
     $scope.tools={};
     $scope.state={};
     $scope.dictionary={
@@ -11,7 +11,7 @@ app.controller("loanRecheckCtrl",function($scope,$http){
         bankData:bankData
     };
     $scope.dataModel={
-        proposerInfo:{
+        userInfo:{
             name:"雪米",
             phone:"18817828965",
             identity:"居民身份证",
@@ -26,8 +26,8 @@ app.controller("loanRecheckCtrl",function($scope,$http){
             applyMoney:"1,000,000"
         },
         houseInfo:{
-            code:"2017房验第00002447号",
-            obligeeName:"程红",
+            obligeeName1:"程红",
+            obligeeName2:"程红",
             identityType:"居民身份证",
             identityNum:"522424199108075008",
             houseNum:"201708060003",
@@ -40,7 +40,9 @@ app.controller("loanRecheckCtrl",function($scope,$http){
         }
     };
     $scope.ui={
-
+        loanCheck:function(){
+            window.location.href="loanCheck.html";
+        }
     };
     /*实际付款数据模拟*/
     $http.post('data/bankAddContract.json').then(function(data){
