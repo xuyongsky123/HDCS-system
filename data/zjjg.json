@@ -24,6 +24,12 @@
 		"status":"false"
 	},
 	{
+		"id": "54325432erre",
+		"name": "增加付款",
+		"url":"addPay.html",
+		"status":"false"
+	},
+	{
 		"id": "314321ewf",
 		"name": "银行对账",
 		"url":"bankAccountChecking.html",
