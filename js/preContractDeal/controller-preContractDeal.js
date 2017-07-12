@@ -14,12 +14,12 @@ app.controller("preContractDealCtrl",function($scope,$http){
         proposerInfo:{
             num:"",
             phone:"",
-            identity:0,
+            identityType:0,
             earning:"",
-            identityNum:"",
+            identity:"",
             fundNum:"",
             workUnit:"",
-            contact:""
+            address:""
         },
         bankInfo:{
             applyBank:0,

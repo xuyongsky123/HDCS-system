@@ -48,7 +48,7 @@
                         <div class="item">
                             <label>证件类型：</label>
                             <div>
-                                <select required ng-model="dataModel.proposerInfo.identity" ng-options="item.key as item.value for item in dictionary.identity">
+                                <select required ng-model="dataModel.proposerInfo.identityType" ng-options="item.key as item.value for item in dictionary.identity">
                                 </select>
                                 <i>▼</i>
                             </div>
@@ -64,7 +64,7 @@
                         <div class="item">
                             <label>证件号码：</label>
                             <div>
-                                <input required ng-model="dataModel.proposerInfo.identityNum" type="text" />
+                                <input required ng-model="dataModel.proposerInfo.identity" type="text" />
                             </div>
                         </div>
                         <div class="item">
@@ -86,7 +86,7 @@
                         <div class="item item-long">
                             <label>联系地址：</label>
                             <div>
-                                <input required ng-model="dataModel.proposerInfo.contact" class="big" type="text" />
+                                <input required ng-model="dataModel.proposerInfo.address" class="big" type="text" />
                             </div>
                         </div>
                     </div>

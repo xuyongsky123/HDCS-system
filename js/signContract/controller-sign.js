@@ -209,6 +209,19 @@ app.controller("signContractCtrl",function($scope,$http,$compile){
     }else{
         console.log('无数据');
     }
+
+    var _d = storage.getStorage('dkyclData');
+    console.log(_d)
+    if(_d){
+        $scope.dataModel.buyerInfo=[
+            {
+                name:_d.proposerInfo.name,
+                identity:_d.proposerInfo.identity,
+                phone:_d.proposerInfo.phone,
+                address:_d.proposerInfo.address
+            }
+        ]
+    }
     
 });
 
