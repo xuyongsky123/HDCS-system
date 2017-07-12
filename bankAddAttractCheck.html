@@ -110,19 +110,19 @@
                     <label>第{{ $index+1 }}次付款时间：</label>
                     <div>
                         <!--<input required ng-model="dataModel.data_payMoney.payTime" onfocus="WdatePicker({isShowWeek:true})" type="text" name="" />-->
-                        <input required ng-model="item.payTime" type="text" name="" />
+                        <input required ng-disabled="true" ng-model="item.payTime" type="text" name="" />
                     </div>
                 </div>
                 <div class="item">
                     <label>第{{ $index+1 }}付款金额：</label>
                     <div>
-                        <input required ng-model="item.payMoney" type="text"/>
+                        <input required ng-disabled="true" ng-model="item.payMoney" type="text"/>
                     </div>
                 </div>
                 <div class="item">
                     <label>第{{ $index+1 }}付款单号：</label>
                     <div>
-                        <input required ng-model="item.payNum" type="text"/>
+                        <input required ng-disabled="true" ng-model="item.payNum" type="text"/>
                     </div>
                 </div>
             </div>
