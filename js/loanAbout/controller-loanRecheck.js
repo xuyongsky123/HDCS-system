@@ -40,6 +40,9 @@ app.controller("loanRecheckCtrl",function($scope,$http){
         }
     };
     $scope.ui={
+        loanRecheck:function(){
+            window.location.href="loanList.html";
+        }
 
     };
     /*实际付款数据模拟*/

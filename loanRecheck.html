@@ -21,13 +21,6 @@
 <body ng-controller="loanRecheckCtrl">
 <div class="tb_container">
     <div class="top-xm fund-div">
-        <p class="fund-p">
-            <input type="text" placeholder="按合同编号搜索"/>
-            <input type="text" placeholder="按监管银行账号搜索"/>
-            <input type="text" placeholder="按卖方银行账号搜索"/>
-            <input type="text" placeholder="按买方银行账号搜索"/>
-            <span class="big"></span>
-        </p>
         <p class="p_after">
             <a href="" class="afterArrow">抵押贷款</a>
             <a href="" class="afterArrow">贷款申请</a>
@@ -153,7 +146,7 @@
                     <div class="item">
                         <label>房权证号：</label>
                         <div>
-                            <input required ng-model="dataModel.houseInfo.houseNum" type="text"/>
+                            <input required ng-model="dataModel.houseInfo.code" type="text"/>
                         </div>
                     </div>
                     <div class="item">
@@ -222,7 +215,7 @@
         </div>
             <div>
                 <div class="split-xm margin-r">
-                    <button ng-click="ui.loanCheck()">确认受理</button>
+                    <button ng-click="ui.loanRecheck()">提交</button>
                 </div>
             </div>
         </div>

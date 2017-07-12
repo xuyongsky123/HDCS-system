@@ -22,13 +22,6 @@
 <body ng-controller="loanCheckCtrl">
 <div class="tb_container">
     <div class="top-xm fund-div">
-        <p class="fund-p">
-            <input type="text" placeholder="按合同编号搜索"/>
-            <input type="text" placeholder="按监管银行账号搜索"/>
-            <input type="text" placeholder="按卖方银行账号搜索"/>
-            <input type="text" placeholder="按买方银行账号搜索"/>
-            <span class="big"></span>
-        </p>
         <p class="p_after">
             <a href="" class="afterArrow">抵押贷款</a>
             <a href="" class="afterArrow">贷款申请</a>
@@ -215,7 +208,7 @@
         </div>
             <div>
                 <div class="split-xm margin-r">
-                    <button>确认受理</button>
+                    <button ng-click="ui.loanCheck()">确认受理</button>
                 </div>
             </div>
         </div>

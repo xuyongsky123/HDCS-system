@@ -31,7 +31,7 @@ app.controller("loanSubmitCtrl",function($scope,$http){
     };
     $scope.ui={
         submit:function(){
-            window.location.href="loanRecheck.html";
+            window.location.href="loanCheck.html";
         }
 
     };

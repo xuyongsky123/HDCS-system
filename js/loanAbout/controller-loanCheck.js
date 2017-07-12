@@ -41,7 +41,7 @@ app.controller("loanCheckCtrl",function($scope,$http){
     };
     $scope.ui={
         loanCheck:function(){
-            window.location.href="loanCheck.html";
+            window.location.href="loanRecheck.html";
         }
     };
     /*实际付款数据模拟*/
