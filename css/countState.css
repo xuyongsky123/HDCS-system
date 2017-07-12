@@ -827,6 +827,35 @@ font-size:20px;
 
 
 
+/*loanAbout 页面*/
+.set-a{display: inline-block;color:#3b7baa; width:80px;height:20px;padding-left:30px; background:url("../image/xm/handel.png") no-repeat 5px 3px;}
+
+
+
+/*loanSubmit页面*/
+
+.single-item>label{margin-left:30px;}
+.single-item>div.submitDiv{cursor: pointer; margin-left:10px; display: inline-block;margin-bottom: -60px;margin-top:30px; width:100px;height:100px;background: url("image/xm/submit.png") no-repeat center center; border:1px dashed #979797;}
+.sSingleItem{overflow: hidden;zoom:1;margin-bottom: 30px;height:130px;}
+.single-item>label>span.redStar{color:red;margin-left:30px;margin-right:20px;}
+.single-item>label.label2{color:#999;}
+
+
+
+/*loanCheck页面*/
+.confirm-div2 *{float:left;}
+.loanCheck .single-item .item>label{text-align: left;margin-left:30px;}
+.single-item>label{font-size:16px;color:#333;}
+.confirm-div2 button{margin-left:40px;margin-right:20px;}
+.single-item>div.submitDiv2{margin-top:10px;}
+.checkDiv>input{margin-left:30px;margin-right:-20px;}
+.checkDiv>input[type="radio"]:checked + label {color:#999;}
+.single-item>label.color{color:#999;!important;}
+/**/
+
+
+
+
 
 
 
