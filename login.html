@@ -11,6 +11,7 @@
     <link rel="stylesheet" href="js/paging/paging.css"/>
     <title>乌鲁木齐市存量房交易系统-登录页面</title>
     <link rel="stylesheet" href="css/login.css"/>
+    <script src="js/jquery.min-1.9.1.js"></script>
 </head>
 <body>
 <div class="container">
@@ -53,5 +54,14 @@
         </div>
     </div>
 </div>
+<script>
+    $(function(){
+        if($(window).height()>=800){
+            $(".container").css("height","100%");
+        }else{
+            $(".container").css("height","auto");
+        }
+    })
+</script>
 </body>
 </html>
