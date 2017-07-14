@@ -17,7 +17,7 @@ app.controller("menuCtrl", function($scope){
 			//初始化页-指向欢迎页
 			refreshIframe('welcome.html');
 
-			var _url;
+			/*var _url;
 			switch(item.name){
 				case '系统管理':
 					_url = '';
@@ -37,10 +37,10 @@ app.controller("menuCtrl", function($scope){
 				case '抵押贷款':
 					_url = 'data/dydk.json';
 					break;
-			}
+			}*/
 
 			//加载二级菜单
-			$.ajax({
+			/*$.ajax({
 				url:_url,
 				data:{
 					id:item.id
@@ -55,7 +55,29 @@ app.controller("menuCtrl", function($scope){
 				error:function(x,y){
 					console.log(x+'......'+y);
 				}
-			});
+			});*/
+			var _menuLevelTwo;
+			switch(item.name){
+				case '系统管理':
+					_menuLevelTwo = '';
+					break;
+				case '贷款预受理':
+					_menuLevelTwo = dkysl;
+					break;
+				case '房源公示':
+					_menuLevelTwo = fygs;
+					break;
+				case '网签受理':
+					_menuLevelTwo = wqsl;
+					break;
+				case '资金监管':
+					_menuLevelTwo = zjjg;
+					break;
+				case '抵押贷款':
+					_menuLevelTwo = dydk;
+					break;
+			}
+			$scope.dataModel.menu_1 = _menuLevelTwo;
 		},
 		//二级菜单点击
 		menuClick_1:function(item){
@@ -65,7 +87,7 @@ app.controller("menuCtrl", function($scope){
 	};
 
 	//加载一级菜单
-	$.ajax({
+	/*$.ajax({
 		url:'data/menu.json',
 		success:function(data){
 
@@ -80,6 +102,9 @@ app.controller("menuCtrl", function($scope){
 		error:function(x,y){
 			console.log(x+'......'+y);
 		}
-	});
+	});*/
+	$scope.dataModel.menu = menuData;
+	//这里加载二级菜单仅供展示使用，实际中需要用户去点击一级菜单加载二级菜单
+	$scope.ui.menuClick({name:'房源公示'});
 
 });

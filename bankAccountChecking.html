@@ -14,6 +14,7 @@
     <link rel="stylesheet" type="text/css" href="css/countState.css" />
     <script type="text/javascript" src="js/jquery.min-1.9.1.js"></script>
     <script src="js/paging/paging.js"></script>
+    <script src="data/data.js"></script>
     <script type="text/javascript" src="js/angular/angular-1.2.27.js"></script>
 
 </head>
@@ -128,13 +129,12 @@
             $('tr:even').css('background','#f5f5f5');
         };
         /*发送ajax请求*/
-        $.ajax({
+        /*$.ajax({
             url:'data/payChecking.json',
             type:'post',
             success:function(data){
                 data = JSON.parse(data);
                 ajax_suc(data,1);
-                /*分页设置*/
                 $('#pageTool').Paging({
                     pagesize:15,
                     count:data.total,
@@ -146,7 +146,6 @@
                                 data = JSON.parse(data);
                                 ajax_suc(data, page);
 
-                                /*点击分页时候跟新页面*/
                                 $(".currentPage").html(page);
                                 $('.totalCount').text(data.total);
                                 var totalPage = Math.ceil(data.total / 15);
@@ -159,6 +158,19 @@
             },
             error:function(errorMeg){
                 alert(errorMeg);
+            }
+        });*/
+        ajax_suc(payChecking,1);
+        $('#pageTool').Paging({
+            pagesize:15,
+            count:payChecking.total,
+            callback:function(page,size,count){
+                ajax_suc(payChecking, page);
+
+                $(".currentPage").html(page);
+                $('.totalCount').text(payChecking.total);
+                var totalPage = Math.ceil(payChecking.total / 15);
+                $(".totalPage").html(totalPage);
             }
         });
     })

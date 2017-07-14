@@ -13,6 +13,7 @@
 
     <link rel="stylesheet" type="text/css" href="css/countState.css" />
     <script type="text/javascript" src="js/jquery.min-1.9.1.js"></script>
+    <script src="data/data.js"></script>
 </head>
 <body>
 <div class="tb_container">
@@ -141,7 +142,7 @@
             $('tr:odd').css('background','#f5f5f5');
         };
         /*发送ajax*/
-        $.ajax({
+        /*$.ajax({
             url:'data/houseCheck2.json',
             type:'post',
             success:function(data){
@@ -151,7 +152,8 @@
             error:function(errorMeg){
                 alert(errorMeg);
             }
-        });
+        });*/
+        ajax_suc(houseCheck2);
 
     })
 </script>

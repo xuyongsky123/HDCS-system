@@ -41,10 +41,4 @@ app.controller("preContractDealCtrl",function($scope,$http){
     };
     $scope.ui={
     };
-    /*实际付款数据模拟*/
-    $http.post('data/bankAddContract.json').then(function(data){
-        $scope.dataModel.readOnly=data.data;
-    },function(){
-
-    });
 });

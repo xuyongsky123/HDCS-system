@@ -45,10 +45,4 @@ app.controller("loanRecheckCtrl",function($scope,$http){
         }
 
     };
-    /*实际付款数据模拟*/
-    $http.post('data/bankAddContract.json').then(function(data){
-        $scope.dataModel.readOnly=data.data;
-    },function(){
-
-    });
 });

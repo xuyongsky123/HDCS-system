@@ -125,7 +125,7 @@ app.controller("veryInfoCtrl", function($scope){
 		},
 		//检索点击事件
 		searchClick:function(){
-			$.ajax({
+			/*$.ajax({
 				url:'data/searchResult.json',
 				success:function(data){
 
@@ -156,7 +156,23 @@ app.controller("veryInfoCtrl", function($scope){
 				error:function(x,y){
 					alert(x+'......'+y);
 				}
-			});
+			});*/
+			//存储原始数据
+			$scope.initData.data_3.searchResult = Object.assign({},searchResult);
+
+			if(searchResult.sealUp == 0 && searchResult.freeze == 0 && searchResult.pledge == 0 && searchResult.sign == 0){
+				$scope.dataModel.data_4.isPass = 0;
+			}else{
+				$scope.dataModel.data_4.isPass = 1;
+			}
+
+			searchResult.sealUp = sealStatus[searchResult.sealUp];
+			searchResult.freeze = freezeStatus[searchResult.freeze];
+			searchResult.pledge = pledgeStatus[searchResult.pledge];
+			searchResult.foreshow = foreshowStatus[searchResult.foreshow];
+			searchResult.sign = signStatus[searchResult.sign];
+
+			$scope.dataModel.data_3.searchResult = searchResult;
 		},
 		//生成房源验证码
 		createCode:function(){
