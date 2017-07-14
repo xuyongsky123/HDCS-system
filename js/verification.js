@@ -204,10 +204,6 @@ app.controller("veryInfoCtrl", function($scope){
 
 		    window.location.href="housePublicity.html";
 
-		},
-		//跳转至网签受理页
-		goSign:function(){
-			window.location.href="signContract.html";
 		}
 	};
 
