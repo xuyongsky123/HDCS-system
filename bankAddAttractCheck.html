@@ -29,250 +29,240 @@
             <a href="#" class="reload">刷新</a>
         </p>
     </div>
-    <div class="table-border fund-border ">
+    <div class="table-border sign-div fund-border ">
         <p class="blue_p">增加合同</p>
         <div class="cond-container">
-        <div class="single-item">
-            <div class="split">
-                <div class="item">
-                    <label>合同编号：</label>
-                    <div>
-                        <input ng-disabled="true" ng-model="dataModel.data_addAttr.attrNum" type="text" name="" />
-                    </div>
-                </div>
-                <div class="item">
-                    <label>监管银行：</label>
-                    <div>
-                        <select ng-disabled="true" ng-model="dataModel.data_addAttr.bank" ng-options="item.key as item.value for item in dictionary.bankData"></select>
-                        <i>▼</i>
-                    </div>
-                </div>
-                <div class="item">
-                    <label>状&ensp;&ensp;&ensp;&ensp;态：</label>
-                    <div>
-                        <select ng-disabled="true" ng-model="dataModel.data_addAttr.state" ng-options="item.key as item.value for item in dictionary.contractState"></select>
-                        <i>▼</i>
-                    </div>
-                </div>
-            </div>
-            <div class="split">
-                <div class="item">
-                    <label>合同总价：</label>
-                    <div>
-                        <input ng-disabled="true" ng-model="dataModel.data_addAttr.attrTotal" type="text"/>
-                    </div>
-                </div>
-                <div class="item">
-                    <label>监管金额：</label>
-                    <div>
-                        <input ng-disabled="true" ng-model="dataModel.data_addAttr.supMoney" type="text" value=""/>
-                    </div>
-                </div>
-            </div>
-            <div class="split">
-                <div class="item item-long">
-                    <label>物业地址：</label>
-                    <div >
-                        <input ng-disabled="true" ng-model="dataModel.data_addAttr.location"  class="address" type="text" value=""/>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div class="readonly single-item">
-            <p class="white-p">付款方式</p>
-            <table class="table-item">
-                <tr>
-                    <th colspan="2">房款分<span ng-bind="dataModel.data_addAttr.payMethod.length"></span>次付清</th>
-                </tr>
-                <tr ng-repeat="item in dataModel.data_addAttr.payMethod">
-                    <td>
-                        <div class="item">
-                            <label>第{{ $index+1 }}次最后付款时间：</label>
-                            <div class="x-item">
-                                <input ng-disabled="true" ng-model="item.payTime" type="text"/>
-                            </div>
+            <div class="single-item">
+                <div class="split">
+                    <div class="item">
+                        <label>合同编号：</label>
+                        <div>
+                            <input ng-disabled="true" ng-model="dataModel.data_addAttr.attrNum" type="text" name="" />
                         </div>
-                    </td>
-                    <td>
-                        <div class="item">
-                            <label>第{{ $index+1 }}次付款金额：</label>
-                            <div class="x-item">
-                                <input ng-disabled="true" ng-model="item.payMoney" type="text"/>
-                            </div>
+                    </div>
+                    <div class="item">
+                        <label>监管银行：</label>
+                        <div>
+                            <select ng-disabled="true" ng-model="dataModel.data_addAttr.bank" ng-options="item.key as item.value for item in dictionary.bankData"></select>
+                            <i>▼</i>
                         </div>
-                    </td>
-                </tr>
-            </table>
-        </div><div class="single-item">
-            <p class="white-p">实际付款<button ng-click="ui.addPayMoney()" ng-disabled="true" class="add_btn contract-add">新增</button></p>
-            <div ng-repeat="item in dataModel.data_payMoney track by $index" class="split">
-                <div class="item">
-                    <label>第{{ $index+1 }}次付款时间：</label>
-                    <div>
-                        <!--<input required ng-model="dataModel.data_payMoney.payTime" onfocus="WdatePicker({isShowWeek:true})" type="text" name="" />-->
-                        <input required ng-disabled="true" ng-model="item.payTime" type="text" name="" />
+                    </div>
+                    <div class="item">
+                        <label>状&ensp;&ensp;&ensp;&ensp;态：</label>
+                        <div>
+                            <select ng-disabled="true" ng-model="dataModel.data_addAttr.state" ng-options="item.key as item.value for item in dictionary.contractState"></select>
+                            <i>▼</i>
+                        </div>
                     </div>
                 </div>
-                <div class="item">
-                    <label>第{{ $index+1 }}付款金额：</label>
-                    <div>
-                        <input required ng-disabled="true" ng-model="item.payMoney" type="text"/>
+                <div class="split">
+                    <div class="item">
+                        <label>合同总价：</label>
+                        <div>
+                            <input ng-disabled="true" ng-model="dataModel.data_addAttr.attrTotal" type="text"/>
+                        </div>
+                    </div>
+                    <div class="item">
+                        <label>监管金额：</label>
+                        <div>
+                            <input ng-disabled="true" ng-model="dataModel.data_addAttr.supMoney" type="text" value=""/>
+                        </div>
                     </div>
                 </div>
-                <div class="item">
-                    <label>第{{ $index+1 }}付款单号：</label>
-                    <div>
-                        <input required ng-disabled="true" ng-model="item.payNum" type="text"/>
+                <div class="split">
+                    <div class="item">
+                        <label>付款时间：</label>
+                        <div>
+                            <input ng-disabled="true"  ng-model="dataModel.data_addAttr.payTime" type="text" value=""/>
+                        </div>
+                    </div>
+                    <div class="item">
+                        <label>付款金额：</label>
+                        <div>
+                            <input ng-disabled="true" ng-model="dataModel.data_addAttr.payMoney" type="text"/>
+                        </div>
                     </div>
                 </div>
-            </div>
-        </div>
-
-        <div class="readonly single-item">
-            <div class="split">
-                <div class="item">
-                    <label>创建时间：</label>
-                    <div class="x-item">
-                        <input ng-disabled="true"  ng-model="dataModel.readOnly.createTime" type="text" />
-                    </div>
-                </div>
-                <div class="item">
-                    <label>创&ensp;建&ensp;人：</label>
-                    <div class="x-item">
-                        <input ng-disabled="true"  ng-model="dataModel.readOnly.creator" type="text"  />
-                    </div>
-                </div>
-                <div class="item">
-                    <label>审&ensp;核&ensp;人：</label>
-                    <div class="x-item">
-                        <input ng-disabled="true"  ng-model="dataModel.readOnly.auditor"  type="text"  />
-                    </div>
-                </div>
-            </div>
-            <div class="split">
-                <div class="item">
-                    <label>最后修改时间：</label>
-                    <div class="x-item">
-                        <input ng-disabled="true" ng-model="dataModel.readOnly.endTime"  type="text"  />
-                    </div>
-                </div>
-                <div class="item">
-                    <label>最后修改人：</label>
-                    <div class="x-item">
-                        <input ng-disabled="true" ng-model="dataModel.readOnly.endPeo"  type="text"  />
-                    </div>
-                </div>
-                <div class="item">
-                    <label>审核时间：</label>
-                    <div class="x-item">
-                        <input ng-disabled="true" ng-model="dataModel.readOnly.checkTime" type="text"  />
+                <div class="split">
+                    <div class="item item-long">
+                        <label>物业地址：</label>
+                        <div >
+                            <input ng-disabled="true" ng-model="dataModel.data_addAttr.location"  class="address" type="text" value=""/>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
-
-        <div class="single-item">
-            <p class="white-p">卖方信息</p>
-            <div class="split">
-                <div class="item">
-                    <label>姓&ensp;&ensp;&ensp;&ensp;名：</label>
-                    <div>
-                        <input ng-disabled="true" ng-model="dataModel.sellerInfo.name" type="text" name="" />
+        <p class="blue_p">实际付款</p>
+        <div class="cond-container">
+            <div class="single-item">
+                <div class="split">
+                    <div class="item">
+                        <label>付款时间：</label>
+                        <div >
+                            <input ng-disabled="true" ng-model="dataModel.data_payMoney.payTime" onfocus="WdatePicker({isShowWeek:true})" type="text" name="" />
+                        </div>
                     </div>
-                </div>
-                <div class="item">
-                    <label>手&ensp;&ensp;&ensp;&ensp;机：</label>
-                    <div>
-                        <input ng-disabled="true" ng-model="dataModel.sellerInfo.phone" type="text"/>
+                    <div class="item">
+                        <label>付款金额：</label>
+                        <div >
+                            <input ng-disabled="true" ng-model="dataModel.data_payMoney.payMoney" type="text"/>
+                        </div>
                     </div>
-                </div>
-                <div class="item">
-                    <label>开户银行：</label>
-                    <div>
-                        <select ng-disabled="true" ng-model="dataModel.data_addAttr.bank" ng-options="item.key as item.value for item in dictionary.bankData"></select>
-                        <i>▼</i>
-                    </div>
-                </div>
-            </div>
-            <div class="split">
-                <div class="item">
-                    <label>银行账号：</label>
-                    <div>
-                        <input ng-disabled="true" ng-model="dataModel.sellerInfo.bankNum"  type="text"/>
-                    </div>
-                </div>
-                <div class="item">
-                    <label>收&ensp;款&ensp;人：</label>
-                    <div>
-                        <input ng-disabled="true" ng-model="dataModel.sellerInfo.receiver"  type="text" value=""/>
-                    </div>
-                </div>
-                <div class="item">
-                    <label>房产证编号：</label>
-                    <div>
-                        <input ng-disabled="true" ng-model="dataModel.sellerInfo.houseNum"  type="text" value=""/>
+                    <div class="item">
+                        <label>付款单号：</label>
+                        <div >
+                            <input ng-disabled="true" ng-model="dataModel.data_payMoney.payNum" type="text"/>
+                        </div>
                     </div>
                 </div>
             </div>
-            <div class="split">
-                <div class="item">
-                    <label>身份证号：</label>
-                    <div>
-                        <input ng-disabled="true" ng-model="dataModel.sellerInfo.identityCard" type="text" value=""/>
+            <div class="readonly single-item">
+                <div class="split">
+                    <div class="item">
+                        <label>创建时间：</label>
+                        <div class="x-item">
+                            <input ng-disabled="true"  ng-model="dataModel.readOnly.createTime" type="text" />
+                        </div>
+                    </div>
+                    <div class="item">
+                        <label>创&ensp;建&ensp;人：</label>
+                        <div class="x-item">
+                            <input ng-disabled="true"  ng-model="dataModel.readOnly.creator" type="text"  />
+                        </div>
+                    </div>
+                    <div class="item">
+                        <label>审&ensp;核&ensp;人：</label>
+                        <div class="x-item">
+                            <input ng-disabled="true"  ng-model="dataModel.readOnly.auditor"  type="text"  />
+                        </div>
+                    </div>
+                </div>
+                <div class="split">
+                    <div class="item">
+                        <label>最后修改时间：</label>
+                        <div class="x-item">
+                            <input ng-disabled="true" ng-model="dataModel.readOnly.endTime"  type="text"  />
+                        </div>
+                    </div>
+                    <div class="item">
+                        <label>最后修改人：</label>
+                        <div class="x-item">
+                            <input ng-disabled="true" ng-model="dataModel.readOnly.endPeo"  type="text"  />
+                        </div>
+                    </div>
+                    <div class="item">
+                        <label>审核时间：</label>
+                        <div class="x-item">
+                            <input ng-disabled="true" ng-model="dataModel.readOnly.checkTime" type="text"  />
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
+        <p class="blue_p">卖方信息</p>
+        <div class="cond-container">
+            <div class="single-item">
+                <div class="split">
+                    <div class="item">
+                        <label>姓&ensp;&ensp;&ensp;&ensp;名：</label>
+                        <div>
+                            <input ng-disabled="true" ng-model="dataModel.sellerInfo.name" type="text" name="" />
+                        </div>
+                    </div>
+                    <div class="item">
+                        <label>手&ensp;&ensp;&ensp;&ensp;机：</label>
+                        <div>
+                            <input ng-disabled="true" ng-model="dataModel.sellerInfo.phone" type="text"/>
+                        </div>
+                    </div>
+                    <div class="item">
+                        <label>开户银行：</label>
+                        <div>
+                            <select ng-disabled="true" ng-model="dataModel.data_addAttr.bank" ng-options="item.key as item.value for item in dictionary.bankData"></select>
+                            <i>▼</i>
+                        </div>
+                    </div>
+                </div>
+                <div class="split">
+                    <div class="item">
+                        <label>银行账号：</label>
+                        <div>
+                            <input ng-disabled="true" ng-model="dataModel.sellerInfo.bankNum"  type="text"/>
+                        </div>
+                    </div>
+                    <div class="item">
+                        <label>收&ensp;款&ensp;人：</label>
+                        <div>
+                            <input ng-disabled="true" ng-model="dataModel.sellerInfo.receiver"  type="text" value=""/>
+                        </div>
+                    </div>
+                    <div class="item">
+                        <label>房产证编号：</label>
+                        <div>
+                            <input ng-disabled="true" ng-model="dataModel.sellerInfo.houseNum"  type="text" value=""/>
+                        </div>
+                    </div>
+                </div>
+                <div class="split">
+                    <div class="item">
+                        <label>身份证号：</label>
+                        <div>
+                            <input ng-disabled="true" ng-model="dataModel.sellerInfo.identityCard" type="text" value=""/>
+                        </div>
+                    </div>
+                </div>
+            </div>
 
-        <div>
+
             <p class="white-p">买方信息</p>
-            <div class="split">
-                <div class="item">
-                    <label>姓&ensp;&ensp;&ensp;&ensp;名：</label>
-                    <div>
-                        <input ng-disabled="true" ng-model="dataModel.buyerInfo.name" type="text" name="" />
+            <div class="cond-container">
+                <div class="split">
+                    <div class="item">
+                        <label>姓&ensp;&ensp;&ensp;&ensp;名：</label>
+                        <div>
+                            <input ng-disabled="true" ng-model="dataModel.buyerInfo.name" type="text" name="" />
+                        </div>
+                    </div>
+                    <div class="item">
+                        <label>手&ensp;&ensp;&ensp;&ensp;机：</label>
+                        <div>
+                            <input ng-disabled="true" ng-model="dataModel.buyerInfo.phone" type="text"/>
+                        </div>
+                    </div>
+                    <div class="item">
+                        <label>开户银行：</label>
+                        <div>
+                            <select ng-disabled="true" ng-model="dataModel.data_addAttr.bank" ng-options="item.key as item.value for item in dictionary.bankData"></select>
+                            <i>▼</i>
+                        </div>
                     </div>
                 </div>
-                <div class="item">
-                    <label>手&ensp;&ensp;&ensp;&ensp;机：</label>
-                    <div>
-                        <input ng-disabled="true" ng-model="dataModel.buyerInfo.phone" type="text"/>
+                <div class="split">
+                    <div class="item">
+                        <label>银行账号：</label>
+                        <div>
+                            <input ng-disabled="true" ng-model="dataModel.buyerInfo.bankNum" type="text"/>
+                        </div>
                     </div>
-                </div>
-                <div class="item">
-                    <label>开户银行：</label>
-                    <div>
-                        <select ng-disabled="true" ng-model="dataModel.data_addAttr.bank" ng-options="item.key as item.value for item in dictionary.bankData"></select>
-                        <i>▼</i>
+                    <div class="item">
+                        <label>付&ensp;款&ensp;人：</label>
+                        <div>
+                            <input ng-disabled="true" ng-model="dataModel.buyerInfo.recPeo" type="text" value=""/>
+                        </div>
                     </div>
-                </div>
-            </div>
-            <div class="split">
-                <div class="item">
-                    <label>银行账号：</label>
-                    <div>
-                        <input ng-disabled="true" ng-model="dataModel.buyerInfo.bankNum" type="text"/>
-                    </div>
-                </div>
-                <div class="item">
-                    <label>付&ensp;款&ensp;人：</label>
-                    <div>
-                        <input ng-disabled="true" ng-model="dataModel.buyerInfo.recPeo" type="text" value=""/>
-                    </div>
-                </div>
-                <div class="item">
-                    <label>身份证号：</label>
-                    <div>
-                        <input ng-disabled="true" ng-model="dataModel.buyerInfo.identityCard" type="text" value=""/>
+                    <div class="item">
+                        <label>身份证号：</label>
+                        <div>
+                            <input ng-disabled="true" ng-model="dataModel.buyerInfo.identityCard" type="text" value=""/>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
-
-        <div>
+        <p class="blue_p margin-t">合同文本</p>
+        <div class="cond-container">
             <div class="split-xm">
-                <p class="white-p">合同文本</p>
                 <textarea ng-disabled="true" ng-model="dataModel.contractText.textarea"  name=""></textarea>
             </div>
             <div class="split-xm">
@@ -286,7 +276,6 @@
                 <button ng-click="ui.drawbackLoan()">请求退款</button>
                 <button ng-click="ui.receiveLoan()">请求放款</button>
             </div>
-        </div>
         </div>
         <div class="foot">
 

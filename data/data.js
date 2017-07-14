@@ -542,7 +542,7 @@ var payChecking={
       "toNum": "2017060100002222",
       "superviseMoney": "12,333,999",
       "intoMoney": "12,333,999",
-      "payWay": "本行专账",
+      "payWay": "本行转账",
       "state": "对账成功",
       "handle": "查看"
     },
@@ -554,7 +554,7 @@ var payChecking={
       "toNum": "2017060100002222",
       "superviseMoney": "12,333,999",
       "intoMoney": "12,333,999",
-      "payWay": "本行专账",
+      "payWay": "本行转账",
       "state": "对账成功",
       "handle": "查看"
     },
@@ -566,7 +566,7 @@ var payChecking={
       "toNum": "2017060100002222",
       "superviseMoney": "12,333,999",
       "intoMoney": "12,333,999",
-      "payWay": "本行专账",
+      "payWay": "本行转账",
       "state": "对账成功",
       "handle": "查看"
     },
@@ -578,7 +578,7 @@ var payChecking={
       "toNum": "2017060100002222",
       "superviseMoney": "12,333,999",
       "intoMoney": "12,333,999",
-      "payWay": "本行专账",
+      "payWay": "本行转账",
       "state": "对账成功",
       "handle": "查看"
     },
@@ -590,7 +590,7 @@ var payChecking={
       "toNum": "2017060100002222",
       "superviseMoney": "12,333,999",
       "intoMoney": "12,333,999",
-      "payWay": "本行专账",
+      "payWay": "本行转账",
       "state": "对账成功",
       "handle": "查看"
     },
@@ -602,7 +602,7 @@ var payChecking={
       "toNum": "2017060100002222",
       "superviseMoney": "12,333,999",
       "intoMoney": "12,333,999",
-      "payWay": "本行专账",
+      "payWay": "本行转账",
       "state": "对账成功",
       "handle": "查看"
     },
@@ -614,7 +614,7 @@ var payChecking={
       "toNum": "2017060100002222",
       "superviseMoney": "12,333,999",
       "intoMoney": "12,333,999",
-      "payWay": "本行专账",
+      "payWay": "本行转账",
       "state": "对账成功",
       "handle": "查看"
     },{
@@ -625,7 +625,7 @@ var payChecking={
       "toNum": "2017060100002222",
       "superviseMoney": "12,333,999",
       "intoMoney": "12,333,999",
-      "payWay": "本行专账",
+      "payWay": "本行转账",
       "state": "对账成功",
       "handle": "查看"
     },
@@ -637,7 +637,7 @@ var payChecking={
       "toNum": "2017060100002222",
       "superviseMoney": "12,333,999",
       "intoMoney": "12,333,999",
-      "payWay": "本行专账",
+      "payWay": "本行转账",
       "state": "对账成功",
       "handle": "查看"
     },
@@ -649,7 +649,7 @@ var payChecking={
       "toNum": "2017060100002222",
       "superviseMoney": "12,333,999",
       "intoMoney": "12,333,999",
-      "payWay": "本行专账",
+      "payWay": "本行转账",
       "state": "对账成功",
       "handle": "查看"
     },
@@ -661,7 +661,7 @@ var payChecking={
       "toNum": "2017060100002222",
       "superviseMoney": "12,333,999",
       "intoMoney": "12,333,999",
-      "payWay": "本行专账",
+      "payWay": "本行转账",
       "state": "对账成功",
       "handle": "查看"
     },
@@ -673,7 +673,7 @@ var payChecking={
       "toNum": "2017060100002222",
       "superviseMoney": "12,333,999",
       "intoMoney": "12,333,999",
-      "payWay": "本行专账",
+      "payWay": "本行转账",
       "state": "对账成功",
       "handle": "查看"
     },
@@ -685,7 +685,7 @@ var payChecking={
       "toNum": "2017060100002222",
       "superviseMoney": "12,333,999",
       "intoMoney": "12,333,999",
-      "payWay": "本行专账",
+      "payWay": "本行转账",
       "state": "对账成功",
       "handle": "查看"
     },
@@ -697,7 +697,7 @@ var payChecking={
       "toNum": "2017060100002222",
       "superviseMoney": "12,333,999",
       "intoMoney": "12,333,999",
-      "payWay": "本行专账",
+      "payWay": "本行转账",
       "state": "对账成功",
       "handle": "查看"
     },
@@ -709,7 +709,7 @@ var payChecking={
       "toNum": "2017060100002222",
       "superviseMoney": "12,333,999",
       "intoMoney": "12,333,999",
-      "payWay": "本行专账",
+      "payWay": "本行转账",
       "state": "对账成功",
       "handle": "查看"
     }

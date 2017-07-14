@@ -102,6 +102,7 @@ a {
 }
 .top-xm #startTime , #endTime{
   background: #ffffff url("image/xm/datePicker.png") no-repeat 195px 6px;
+  cursor: pointer;
 }
 .top-xm .p_after a.afterArrow{
   font-size:14px;
@@ -407,10 +408,10 @@ input,select{
 /*.item {float:left;width: 370px;height: 36px;margin-top: 20px;margin-right: 30px;font-size: 16px;color: #333;}*/
 .item:after {content: '';display: table;clear: both;}
 .item-long {width: 680px;}
-.item > label {width: 130px;float: left;height: 36px;line-height: 36px;text-align:right;}
+.item > label {width: 120px;float: left;height: 36px;line-height: 36px;text-align:right;}
 .item > label.more {line-height: 18px;}
 /*.item > label {width: 174px;float: left;height: 36px;line-height: 36px;text-align:right;}*/
-.item > div {margin-left: 130px;height: 36px;border:1px solid #979797;border-radius: 2px;position: relative;overflow: hidden;zoom:1;}
+.item > div {margin-left: 120px;height: 36px;border:1px solid #979797;border-radius: 2px;position: relative;overflow: hidden;zoom:1;}
 .item > div input[type="text"] {height: 36px;line-height: 36px;text-align:left;border:none;background:none;width: 100%;padding:0 10px; color: #666;}
 .item > div select {height:36px;border:none;background:none;text-align:center;width: 100%;-webkit-appearance:none;text-indent:0.5em;color: #666;}
 .item > button {display: block;height: 36px;line-height: 36px;color: #333;padding-left: 70px;background:url(image/xy/add-icon.png) 34px 50% no-repeat;background-size: 24px 24px;margin-left: 76px;}
@@ -418,12 +419,7 @@ input,select{
 .item > div > i {position: absolute;height: 34px;line-height:34px;width: 30px;font-style: normal;font-size: 12px;top:0;right:0;bottom: 0;text-align: center;display: block;z-index: 10;pointer-events: none;background-color: #fff;cursor: pointer;}
 .item > div input[disabled="disabled"] , .item > div select[disabled="disabled"]{color: #bbb;}
 
-table.table-item tr th {font-weight: normal;}
-table.table-item tr td {text-align: center;}
-table.table-item tr td .item {float: none;display: inline-block;margin:0;width: 386px;}
-table.table-item tr td .item > label {width: 170px;}
-table.table-item tr td .item > div {margin-left: 170px;}
-
+.item > div input[disabled="disabled"] , .item > div select[disabled="disabled"]{color: #bbb;}
 .split:after {content: '';display: table;clear: both;}
 .fund-div .fund-p{
   padding-left:40px;
@@ -449,10 +445,6 @@ table.table-item tr td .item > div {margin-left: 170px;}
 .fund-border .white-p{
   border:none;
   padding-left: 0;
-  position: relative;
-}
-.white-p button {
-  top: 6px;
 }
 .fund-border th{
   color:#333;
@@ -522,9 +514,6 @@ button{
 button[disabled="disabled"]{
   background-color:#adcdeb;
   cursor:default;
-}
-.white-p button[disabled="disabled"] {
-  background-color:#fff;
 }
 .fj{
   margin-left:20px;
@@ -773,11 +762,9 @@ font-size:20px;
 .add_btn{
   display:block;
   color:#333;
-  background:url("image/xm/add-icon.png") 20px 50% no-repeat;
+  background:url("image/xm/add-icon.png") 34px 50% no-repeat;
   background-size:24px 24px ;
-  padding-left:60px;
-  margin-right: 0;
-  padding-right: 0;
+  padding-left:70px;
 }
 .add_btn[disabled="disabled"]{
   background-image: url("image/xm/add-icon-dis.png");
@@ -791,10 +778,12 @@ font-size:20px;
 /*addPay*/
 .table-pay tr td{
   font-size: 16px;
+
 }
 .readonly-table table tr td{
   font-size: 16px;
   text-align: left;
+  padding-left:60px;
 }
 .no-border{
   border:none;
@@ -828,7 +817,6 @@ font-size:20px;
 
 
 
-
 /*loanAbout 页面*/
 .set-a{display: inline-block;color:#3b7baa; width:80px;height:20px;padding-left:30px; background:url("../image/xm/handel.png") no-repeat 5px 3px;}
 
@@ -843,7 +831,6 @@ font-size:20px;
 .single-item>label.label2{color:#999;}
 
 
-
 /*loanCheck页面*/
 .confirm-div2 *{float:left;}
 .loanCheck .single-item .item>label{text-align: left;margin-left:30px;}
@@ -856,9 +843,6 @@ font-size:20px;
 /**/
 
 
-
-
-
-
-
-
+/*补充部分*/
+.margin-t{margin-top:20px;}
+.cond-container>.border-single{border-bottom:1px solid #979797;!important;}

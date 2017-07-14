@@ -32,71 +32,74 @@
             <a href="#" class="export reload">导出</a>
         </p>
     </div>
-    <div class="table-border fund-border">
+    <div class="table-border sign-div fund-border">
         <p class="blue_p">增加付款</p>
         <div class="cond-container">
-        <div class="single-item">
-            <div class="split">
-                <div class="item">
-                    <label>单号：</label>
-                    <div>
-                        <input required ng-model="dataModel.addPay.num" type="text" name="" />
+            <div class="single-item">
+                <div class="split">
+                    <div class="item">
+                        <label>单号：</label>
+                        <div>
+                            <input required ng-model="dataModel.addPay.num" type="text" name="" />
+                        </div>
                     </div>
-                </div>
-                <div class="item">
-                    <label>合同编号：</label>
-                    <div>
-                        <input required ng-model="dataModel.addPay.contractNum" type="text"/>
+                    <div class="item">
+                        <label>合同编号：</label>
+                        <div>
+                            <input required ng-model="dataModel.addPay.contractNum" type="text"/>
+                        </div>
                     </div>
-                </div>
-                <div class="item">
-                    <label>状态：</label>
-                    <div>
-                        <select required ng-model="dataModel.addPay.state" ng-options="item.key as item.value for item in dictionary.contractState"></select>
-                        <i>▼</i>
+                    <div class="item">
+                        <label>状态：</label>
+                        <div>
+                            <select required ng-model="dataModel.addPay.state" ng-options="item.key as item.value for item in dictionary.contractState"></select>
+                            <i>▼</i>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
-        <p class="white-p">已付款信息</p>
-        <div class="single-item">
-           <table class="table-pay">
-               <tr>
-                   <td>付款时间</td>
-                   <td>付款金额</td>
-                   <td>付款单号</td>
-               </tr>
-               <tr ng-repeat="item in dataModel.payed track by $index">
-                   <td required ng-bind="item.payTime"></td>
-                   <td required ng-bind="item.payMoney"></td>
-                   <td required ng-bind="item.payNum"></td>
-               </tr>
-           </table>
-        </div>
-        <div class="single-item">
-            <div class="split">
-                <div class="item">
-                    <label>付款日期：</label>
-                    <div>
-                        <input required ng-model="dataModel.payedAnother.payDate" type="text" name="" />
+        <p class="blue_p">已付款信息</p>
+        <div class="cond-container">
+            <div class="single-item border-single">
+               <table class="table-pay">
+                   <tr>
+                       <td>付款时间</td>
+                       <td>付款金额</td>
+                       <td>付款单号</td>
+                   </tr>
+                   <tr ng-repeat="item in dataModel.payed track by $index">
+                       <td required ng-bind="item.payTime"></td>
+                       <td required ng-bind="item.payMoney"></td>
+                       <td required ng-bind="item.payNum"></td>
+                   </tr>
+               </table>
+            </div>
+            <div class="single-item border-single">
+                <div class="split">
+                    <div class="item">
+                        <label>付款日期：</label>
+                        <div>
+                            <input required ng-model="dataModel.payedAnother.payDate" type="text" name="" />
+                        </div>
                     </div>
-                </div>
-                <div class="item">
-                    <label>付款金额：</label>
-                    <div>
-                        <input required ng-model="dataModel.payedAnother.payMoney" type="text"/>
+                    <div class="item">
+                        <label>付款金额：</label>
+                        <div>
+                            <input required ng-model="dataModel.payedAnother.payMoney" type="text"/>
+                        </div>
                     </div>
-                </div>
-                <div class="item">
-                    <label>银行流水：</label>
-                    <div>
-                        <input required ng-model="dataModel.payedAnother.bankStream" type="text"/>
+                    <div class="item">
+                        <label>银行流水：</label>
+                        <div>
+                            <input required ng-model="dataModel.payedAnother.bankStream" type="text"/>
+                        </div>
                     </div>
-                </div>
-                <div class="item">
-                    <label class="more">资金监管到账日&ensp;期：</label>
-                    <div>
-                        <input required ng-model="dataModel.payedAnother.receiveDate" type="text"/>
+                    <div class="item">
+                        <label class="more">资金监管到账日&ensp;期：</label>
+                        <div>
+                            <input required ng-model="dataModel.payedAnother.receiveDate" type="text"/>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -121,73 +124,73 @@
                </tr>
            </table>
         </div>
-        <p class="white-p">当事人账号信息</p>
-        <div class="single-item no-border">
-            <div class="split">
-            <div class="item">
-                <label>收款人：</label>
-                <div>
-                    <input required ng-model="dataModel.partyInfo.recPeo" type="text" name="" />
-                </div>
-            </div>
-            <div class="item">
-                <label>银行账号：</label>
-                <div>
-                    <input required ng-model="dataModel.partyInfo.banNum" type="text"/>
-                </div>
-            </div>
-            <div class="item">
-                <label>开户银行：</label>
-                <div>
-                    <select required ng-model="dataModel.partyInfo.openBank" ng-options="item.key as item.value for item in dictionary.bankData">
-                    </select>
-                    <i>▼</i>
-                </div>
-            </div>
-        </div>
-            <div class="split">
+        <p class="blue_p">当事人账号信息</p>
+        <div class="cond-container">
+            <div class="single-item no-border">
+                <div class="split">
                 <div class="item">
-                    <label>付款人：</label>
+                    <label>收款人：</label>
                     <div>
-                        <input required  ng-model="dataModel.partyInfo.payPeo"  type="text" name="" />
+                        <input required ng-model="dataModel.partyInfo.recPeo" type="text" name="" />
                     </div>
                 </div>
                 <div class="item">
                     <label>银行账号：</label>
                     <div>
-                        <input required ng-model="dataModel.partyInfo.payBankNum"  type="text"/>
+                        <input required ng-model="dataModel.partyInfo.banNum" type="text"/>
                     </div>
                 </div>
                 <div class="item">
                     <label>开户银行：</label>
                     <div>
-                        <select required ng-model="dataModel.partyInfo.payOpenBank" ng-options="item.key as item.value for item in dictionary.bankData">
+                        <select required ng-model="dataModel.partyInfo.openBank" ng-options="item.key as item.value for item in dictionary.bankData">
                         </select>
                         <i>▼</i>
                     </div>
                 </div>
             </div>
-            <div>
-                <div class="split-xm">
-                    <p class="white-p">&nbsp;&nbsp;备注：</p>
-                    <textarea required ng-model="dataModel.partyInfo.remark" name=""></textarea>
+                <div class="split">
+                    <div class="item">
+                        <label>付款人：</label>
+                        <div>
+                            <input required  ng-model="dataModel.partyInfo.payPeo"  type="text" name="" />
+                        </div>
+                    </div>
+                    <div class="item">
+                        <label>银行账号：</label>
+                        <div>
+                            <input required ng-model="dataModel.partyInfo.payBankNum"  type="text"/>
+                        </div>
+                    </div>
+                    <div class="item">
+                        <label>开户银行：</label>
+                        <div>
+                            <select required ng-model="dataModel.partyInfo.payOpenBank" ng-options="item.key as item.value for item in dictionary.bankData">
+                            </select>
+                            <i>▼</i>
+                        </div>
+                    </div>
                 </div>
-                <div class="split-xm">
-                    <label class="weight">附件:</label>
-                    <button class="sendFile">上传</button>
-                </div>
-                <div class="split-xm margin-r">
-                    <button ng-click="ui.cancel()">取消</button>
-                    <button ng-disabled="!baseForm.$valid" ng-click="ui.save()">保存</button>
+                <div>
+                    <div class="split-xm">
+                        <p class="white-p">&nbsp;&nbsp;备注：</p>
+                        <textarea required ng-model="dataModel.partyInfo.remark" name=""></textarea>
+                    </div>
+                    <div class="split-xm">
+                        <label class="weight">附件:</label>
+                        <button class="sendFile">上传</button>
+                    </div>
+                    <div class="split-xm margin-r">
+                        <button ng-click="ui.cancel()">取消</button>
+                        <button ng-disabled="!baseForm.$valid" ng-click="ui.save()">保存</button>
+                    </div>
                 </div>
             </div>
-        </div>
         </div>
         <div class="foot">
 
         </div>
     </div>
-</div>
 </form>
 <script>
     $(function(){
