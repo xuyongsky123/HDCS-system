@@ -93,6 +93,44 @@ app.controller("signContractCtrl",function($scope,$http,$compile){
     };
 
     $scope.ui={
+        searchData:function(){
+            //数据模拟
+            var _h = storage.getStorage('fyyzDataSingle');
+            var _obj = [];
+            if(_h){
+                if(_h.data_2.obligee.length){
+                    for(var i=0;i<_h.data_2.obligee.length;i++){
+                        _obj.push({
+                            name:_h.data_2.obligee[i].obligee_name,
+                            identity:_h.data_2.obligee[i].obligee_card_num,
+                            phone:'13089992332',
+                            address:'大墅'
+                        })
+                    }
+                    $scope.dataModel.sellerInfo=_obj;
+                    $scope.dataModel.houseInfo={
+                        address:_h.data_2.common.obligee_address,
+                        rightNum:_h.data_2.common.obligee_right_num,
+                        regTime:_h.data_1.date,
+                        totalLevel:_h.data_2.common.obligee_level_count,
+                        area:_h.data_2.common.obligee_right_area,
+                        areaInner:_h.data_2.common.obligee_inner_area,
+                        use:0,
+                        houseCharacter:0,
+                        addressNum:"",
+                        houseMethod:0,
+                        deadline:"",
+                        getMethod:0,
+                        houseStructure:0,
+                        otherMsg:""
+                    };
+                }else{
+                    console.log('无数据');
+                }
+            }else{
+                console.log('无数据');
+            }
+        },
         addSeller:function(){
             $scope.dataModel.sellerInfo.push({
                 name:"",
@@ -174,7 +212,7 @@ app.controller("signContractCtrl",function($scope,$http,$compile){
 
 
     //数据模拟
-    var _h = storage.getStorage('fyyzDataSingle');
+    /*var _h = storage.getStorage('fyyzDataSingle');
     var _obj = [];
     if(_h){
         if(_h.data_2.obligee.length){
@@ -208,7 +246,7 @@ app.controller("signContractCtrl",function($scope,$http,$compile){
         }
     }else{
         console.log('无数据');
-    }
+    }*/
 
     var _d = storage.getStorage('dkyclData');
     console.log(_d)

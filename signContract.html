@@ -36,6 +36,23 @@
             </p>
         </div>
         <div class="table-border sign-div fund-border ">
+            <p class="blue_p">检索信息</p>
+            <div class="cond-container">
+
+                <div class="single-item">
+                    <div class="split confirm-div">
+                        <button ng-click="ui.searchData()" class="confirm">检索信息</button>
+                        <div class="item">
+                            <label>房源验证码：</label>
+                            <div>
+                                <input required ng-model="dataModel.houseInfo.code" type="text" />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
             <p class="blue_p">卖方信息</p>
             <div class="cond-container">
                 <button ng-click="ui.addSeller()" class="add_btn contract-add">新增</button>
