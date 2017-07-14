@@ -320,6 +320,7 @@ table .middle_tr a{
 /*houseCheck3*/
 
 .white-p{
+  position: relative;
   height:46px;
   margin:0 auto;
   font-weight:700;
@@ -419,7 +420,12 @@ input,select{
 .item > div > i {position: absolute;height: 34px;line-height:34px;width: 30px;font-style: normal;font-size: 12px;top:0;right:0;bottom: 0;text-align: center;display: block;z-index: 10;pointer-events: none;background-color: #fff;cursor: pointer;}
 .item > div input[disabled="disabled"] , .item > div select[disabled="disabled"]{color: #bbb;}
 
-.item > div input[disabled="disabled"] , .item > div select[disabled="disabled"]{color: #bbb;}
+table.table-item tr th {font-weight: normal;}
+table.table-item tr td {text-align: center;}
+table.table-item tr td .item {float: none;display: inline-block;margin:0;width: 386px;}
+table.table-item tr td .item > label {width: 170px;}
+table.table-item tr td .item > div {margin-left: 170px;}
+
 .split:after {content: '';display: table;clear: both;}
 .fund-div .fund-p{
   padding-left:40px;
